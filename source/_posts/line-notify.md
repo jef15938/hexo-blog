@@ -1,5 +1,6 @@
 ---
 title: Line 發送通知 & 綁定聊天室
+date: 2022-10-25 11:42:03
 categories: CICD
 tags: [Line]
 ---

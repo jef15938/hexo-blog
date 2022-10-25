@@ -8,7 +8,7 @@ subtitle: '一個擁有浪漫靈魂的工程師'
 description: 
 keywords:
 author: PongPong
-language: en
+language: zh-TW
 timezone: ''
 
 # URL
@@ -100,7 +100,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: ayer
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

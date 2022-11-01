@@ -1,7 +1,7 @@
 ---
 title: 網頁縮放程式碼 Browser Zoom
 date: 2022-10-24 22:12:39
-categories: Javascript
+categories: Functional Javascript
 tags: [Source Code]
 ---
 

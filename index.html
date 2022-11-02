@@ -77,7 +77,7 @@
     <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/hexo-blog/2022/11/02/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2022-11-02T03:20:51.608Z" itemprop="datePublished">2022-11-02</time>
+  <time class="dt-published" datetime="2022-11-02T03:55:51.957Z" itemprop="datePublished">2022-11-02</time>
 </a>
     
   </div>
@@ -113,7 +113,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/02/hello-world/" data-id="cl9z2nkzy0005byox31s1bya5" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/02/hello-world/" data-id="cl9z3wkkh0005con19or32ydb" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -160,7 +160,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/02/different-aspect-ratio-dynamic-image/" data-id="cl9z2nkzw0004byoxdqdd1nz9" data-title="等寬不同比例下自適應圖片" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/02/different-aspect-ratio-dynamic-image/" data-id="cl9z3wkkf0004con175evelyj" data-title="等寬不同比例下自適應圖片" class="article-share-link">Share</a>
       
       
       
@@ -209,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/01/color-ui/" data-id="cl9z2nkzs0001byoxaci466rr" data-title="Color UI" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/01/color-ui/" data-id="cl9z3wkkb0001con10blifm1b" data-title="Color UI" class="article-share-link">Share</a>
       
       
       
@@ -254,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/25/todo/" data-id="cl9z2nl02000abyoxetlkch5x" data-title="Hexo Todo" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/25/todo/" data-id="cl9z3wkkl000acon1fiu979c6" data-title="Hexo Todo" class="article-share-link">Share</a>
       
       
       
@@ -314,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/25/line-notify/" data-id="cl9z2nkzz0006byox4bn0d7ak" data-title="Line 發送通知 &amp; 綁定聊天室" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/25/line-notify/" data-id="cl9z3wkki0006con1dkx0b0sk" data-title="Line 發送通知 &amp; 綁定聊天室" class="article-share-link">Share</a>
       
       
       
@@ -360,7 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/24/browser-zoom/" data-id="cl9z2nkzn0000byoxf4593n5i" data-title="網頁縮放程式碼 Browser Zoom" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/24/browser-zoom/" data-id="cl9z3wkk60000con13xq9dc8z" data-title="網頁縮放程式碼 Browser Zoom" class="article-share-link">Share</a>
       
       
       
@@ -380,8 +380,25 @@
 <style>
   #header {
     height: 100vh;
+    transition: height 500ms ease-out;
   }
-</style></section>
+
+  #header.height-300 {
+    height: 300px;
+  }
+</style>
+<script>
+  document.addEventListener('scroll', function () {
+    const header = document.getElementById('header');
+    const headerTop = header.getBoundingClientRect().top;
+    if (headerTop >= 0) {
+      header.classList.remove('height-300');
+    } else {
+      header.classList.add('height-300');
+    }
+  });
+  document.dispatchEvent(new Event('scroll'));
+</script></section>
         
           <aside id="sidebar">
   

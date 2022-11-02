@@ -2,5 +2,22 @@
 <style>
   #header {
     height: 100vh;
+    transition: height 500ms ease-out;
+  }
+
+  #header.height-300 {
+    height: 300px;
   }
 </style>
+<script>
+  document.addEventListener('scroll', function () {
+    const header = document.getElementById('header');
+    const headerTop = header.getBoundingClientRect().top;
+    if (headerTop >= 0) {
+      header.classList.remove('height-300');
+    } else {
+      header.classList.add('height-300');
+    }
+  });
+  document.dispatchEvent(new Event('scroll'));
+</script>

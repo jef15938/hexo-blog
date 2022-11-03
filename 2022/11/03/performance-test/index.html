@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>效能測試 Performance Test | 你好, 我是彭彭</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="LightHouse一個開源工具, 用來檢測 performance, accessibility, progressive web apps, SEO and more. 運行方式 直接由 chrome dev tools 執行 Run Lighthouse in Chrome DevTools 使用 node command line 執行 Install and run the N">
+<meta property="og:type" content="article">
+<meta property="og:title" content="效能測試 Performance Test">
+<meta property="og:url" content="https://jef15938.github.io/hexo-blog/2022/11/03/performance-test/index.html">
+<meta property="og:site_name" content="你好, 我是彭彭">
+<meta property="og:description" content="LightHouse一個開源工具, 用來檢測 performance, accessibility, progressive web apps, SEO and more. 運行方式 直接由 chrome dev tools 執行 Run Lighthouse in Chrome DevTools 使用 node command line 執行 Install and run the N">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/11/03/performance-test/lighthouse.png">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/11/03/performance-test/lighthouse-report.png">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/11/03/performance-test/calculate.svg">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/11/03/performance-test/cls-demo.gif">
+<meta property="article:published_time" content="2022-11-03T14:30:56.000Z">
+<meta property="article:modified_time" content="2022-11-03T07:09:37.326Z">
+<meta property="article:author" content="PongPong">
+<meta property="article:tag" content="Tool Introduce">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jef15938.github.io/hexo-blog/2022/11/03/performance-test/lighthouse.png">
+  
+    <link rel="alternate" href="/hexo-blog/atom.xml" title="你好, 我是彭彭" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/hexo-blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/hexo-blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/hexo-blog/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/hexo-blog/" id="logo">你好, 我是彭彭</a>
+      </h1>
+      
+      <h2 id="subtitle-wrap">
+        <a href="/hexo-blog/" id="subtitle">一個擁有浪漫靈魂的工程師</a>
+      </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+        <a class="main-nav-link" href="/hexo-blog/">Home</a>
+        
+        <a class="main-nav-link" href="/hexo-blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-rss-link" class="nav-icon" href="/hexo-blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jef15938.github.io/hexo-blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-performance-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/hexo-blog/2022/11/03/performance-test/" class="article-date">
+  <time class="dt-published" datetime="2022-11-03T14:30:56.000Z" itemprop="datePublished">2022-11-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/hexo-blog/categories/Performance/">Performance</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      效能測試 Performance Test
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <div style="width:128px; height:128px">
+
+<p><img src="/hexo-blog/2022/11/03/performance-test/lighthouse.png" title="lightHouse"></p>
+</div>
+
+<h2 id="LightHouse"><a href="#LightHouse" class="headerlink" title="LightHouse"></a>LightHouse</h2><p>一個開源工具, 用來檢測 performance, accessibility, progressive web apps, SEO and more.</p>
+<h3 id="運行方式"><a href="#運行方式" class="headerlink" title="運行方式"></a>運行方式</h3><ol>
+<li>直接由 chrome dev tools 執行 <a target="_blank" rel="noopener" href="https://developer.chrome.com/docs/lighthouse/overview/#devtools">Run Lighthouse in Chrome DevTools</a></li>
+<li>使用 node command line 執行 <a target="_blank" rel="noopener" href="https://developer.chrome.com/docs/lighthouse/overview/#cli">Install and run the Node command line tool</a></li>
+<li>使用 chrome extension 執行 <a target="_blank" rel="noopener" href="https://developer.chrome.com/docs/lighthouse/overview/#extension">Run Lighthouse as a Chrome Extension</a></li>
+</ol>
+<h3 id="查看報告"><a href="#查看報告" class="headerlink" title="查看報告"></a>查看報告</h3><div style="max-width: 600px">
+
+<p><img src="/hexo-blog/2022/11/03/performance-test/lighthouse-report.png"></p>
+</div>
+
+<p>上方區塊會顯示個項目的分數, 這邊 focus 在 Performance<br>Performance 分數會由 6 個項目決定, 比重請參考 <a target="_blank" rel="noopener" href="https://web.dev/performance-scoring/?utm_source=lighthouse&utm_medium=devtools">lighthouse 計分方式</a></p>
+<h2 id="First-Contentful-Paint-FCP"><a href="#First-Contentful-Paint-FCP" class="headerlink" title="First Contentful Paint (FCP)"></a><a target="_blank" rel="noopener" href="https://web.dev/first-contentful-paint/?utm_source=lighthouse&utm_medium=unknown">First Contentful Paint (FCP)</a></h2><p>當使用者進入網站, 瀏覽器花費多少時間渲染第一個 DOM 內容(images, non-white canvas, svgs 都算, 但是 iframe 裡的任何東西都不算)</p>
+<h2 id="Speed-Index"><a href="#Speed-Index" class="headerlink" title="Speed Index"></a><a target="_blank" rel="noopener" href="https://web.dev/speed-index/?utm_source=lighthouse&utm_medium=devtools">Speed Index</a></h2><p>畫面從開始載入到載入完成, 計算中間的過程, 是否”平滑”, 可以參考<a target="_blank" rel="noopener" href="https://ypwalter.blogspot.com/2018/06/perceptual-speed-index.html">這篇</a>解釋</p>
+<h2 id="Largest-Contentful-Paint-LCP"><a href="#Largest-Contentful-Paint-LCP" class="headerlink" title="Largest Contentful Paint (LCP)"></a><a target="_blank" rel="noopener" href="https://web.dev/lighthouse-largest-contentful-paint/?utm_source=lighthouse&utm_medium=devtools">Largest Contentful Paint (LCP)</a></h2><p>使用者打開網頁後，在當前 viewport 看到的最大物件被呈現出來要多少時間</p>
+<h2 id="Time-to-Interactive-TTI"><a href="#Time-to-Interactive-TTI" class="headerlink" title="Time to Interactive (TTI)"></a><a target="_blank" rel="noopener" href="https://web.dev/interactive/?utm_source=lighthouse&utm_medium=devtools">Time to Interactive (TTI)</a></h2><p>瀏覽器花多久時間達到”完整互動”狀態, 達到”完整互動”要滿足以下條件</p>
+<ul>
+<li>The page displays useful content, which is measured by the First Contentful Paint,</li>
+<li>Event handlers are registered for most visible page elements, and</li>
+<li>The page responds to user interactions within 50 milliseconds.</li>
+</ul>
+<p>那實際上怎麼計算(可以參考<a target="_blank" rel="noopener" href="https://web.dev/tti/">這裡</a>)</p>
+<ol>
+<li>從 FCP 開始.</li>
+<li>搜尋出現 quiet window 至少 5 秒, 並記下該時間 ( quiet window 定義: 沒有 Long Task 且當下正在執行的 Get requests 不多於 2 個.<br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Long_Tasks_API">Long Task API</a><ul>
+<li>長時間的 running event handlers.</li>
+<li>複雜的 reflows and other re-renders.</li>
+<li>event loop 執行時間 that 超過 50 ms.</li>
+</ul>
+</li>
+<li>從第二步拿到的時間往前搜尋, 找到最後的 Long Task 結束時間</li>
+<li>TTI 就是最後的 Long Task 結束時間 (如果都沒有 Long Task, 那 TTI 就是 FCP).</li>
+</ol>
+<p>The following diagram should help visualize the steps above:</p>
+<p><img src="/hexo-blog/2022/11/03/performance-test/calculate.svg"></p>
+<h2 id="Total-Blocking-Time-TBT"><a href="#Total-Blocking-Time-TBT" class="headerlink" title="Total Blocking Time (TBT)"></a><a target="_blank" rel="noopener" href="https://web.dev/lighthouse-total-blocking-time/?utm_source=lighthouse&utm_medium=devtools#what-tbt-measures">Total Blocking Time (TBT)</a></h2><p>TBT 為一個總和的時間, 當瀏覽器凍結畫面 from responding to user input, such as mouse clicks, screen taps, or keyboard presses 都會加總進去<br>TBT 的數值為 FCP 到 TTI 之間的 “long tasks” blocking portion 時間總和, “long tasks” 代表對於 user input 的反應超過 50ms 的行為。假設偵測到一個 70ms 的 long tasks, 那它的 blocking portion &#x3D; 70ms - 50ms &#x3D; 20ms</p>
+<h2 id="Cumulative-Layout-Shift-CLS"><a href="#Cumulative-Layout-Shift-CLS" class="headerlink" title="Cumulative Layout Shift (CLS)"></a><a target="_blank" rel="noopener" href="https://web.dev/cls/?utm_source=lighthouse&utm_medium=devtools">Cumulative Layout Shift (CLS)</a></h2><p>CLS 為最大的 layout shift scores<br>layout shift scores &#x3D; impact fraction * distance fraction</p>
+<p>以下呈現 CLS 對使用者造成的影響</p>
+<p><img src="/hexo-blog/2022/11/03/performance-test/cls-demo.gif"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/performance-test/" data-id="cla0q9onw000ufonl0nxd9h1s" data-title="效能測試 Performance Test" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/Tool-Introduce/" rel="tag">Tool Introduce</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/hexo-blog/2022/11/03/neon-sign-card/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">霓虹燈卡片</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/2D-Animation/">2D Animation</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/3D-Animation/">3D Animation</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/CICD/">CICD</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Functional-Javascript/">Functional Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Others/">Others</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Performance/">Performance</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Static-UI/">Static UI</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/CSS-Tricks/" rel="tag">CSS Tricks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Line/" rel="tag">Line</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/SCSS-Tricks/" rel="tag">SCSS Tricks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Source-Code/" rel="tag">Source Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Todo/" rel="tag">Todo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Tool-Introduce/" rel="tag">Tool Introduce</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/hexo-blog/tags/CSS-Tricks/" style="font-size: 15px;">CSS Tricks</a> <a href="/hexo-blog/tags/Line/" style="font-size: 10px;">Line</a> <a href="/hexo-blog/tags/SCSS-Tricks/" style="font-size: 10px;">SCSS Tricks</a> <a href="/hexo-blog/tags/Source-Code/" style="font-size: 20px;">Source Code</a> <a href="/hexo-blog/tags/Todo/" style="font-size: 10px;">Todo</a> <a href="/hexo-blog/tags/Tool-Introduce/" style="font-size: 10px;">Tool Introduce</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2022/10/">October 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/hexo-blog/2022/11/03/performance-test/">效能測試 Performance Test</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-blog/2022/11/03/neon-sign-card/">霓虹燈卡片</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-blog/2022/11/03/day-night-simulation/">黑夜白天 switch 效果</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-blog/2022/11/03/donut-loading/">甜甜圈 Loading</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-blog/2022/11/03/3d-card/">3D 效果卡片</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 PongPong<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/hexo-blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/hexo-blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/hexo-blog/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/hexo-blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/hexo-blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

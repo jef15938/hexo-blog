@@ -4,19 +4,14 @@
   <meta charset="utf-8">
   
   
-  <title>網頁縮放程式碼 Browser Zoom | 你好, 我是彭彭</title>
+  <title>你好, 我是彭彭</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="12345678910111213141516&#x2F;&#x2F; zoomRate: 縮放倍數, 1 代表原本尺寸function zoom(zoomRate) &amp;#123;        var percent &#x3D; zoomRate * 100;    &#x2F;&#x2F; 設定 zoom, width    document.body.style.position &#x3D; &quot;relative&quot;;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="網頁縮放程式碼 Browser Zoom">
-<meta property="og:url" content="https://jef15938.github.io/hexo-blog/2022/10/24/browser-zoom/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="你好, 我是彭彭">
+<meta property="og:url" content="https://jef15938.github.io/hexo-blog/page/2/index.html">
 <meta property="og:site_name" content="你好, 我是彭彭">
-<meta property="og:description" content="12345678910111213141516&#x2F;&#x2F; zoomRate: 縮放倍數, 1 代表原本尺寸function zoom(zoomRate) &amp;#123;        var percent &#x3D; zoomRate * 100;    &#x2F;&#x2F; 設定 zoom, width    document.body.style.position &#x3D; &quot;relative&quot;;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-10-24T22:12:39.000Z">
-<meta property="article:modified_time" content="2022-11-03T06:21:46.692Z">
 <meta property="article:author" content="PongPong">
-<meta property="article:tag" content="Source Code">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/hexo-blog/atom.xml" title="你好, 我是彭彭" type="application/atom+xml">
@@ -77,7 +72,69 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-browser-zoom" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main">
+  
+    <article id="post-line-notify" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/hexo-blog/2022/10/25/line-notify/" class="article-date">
+  <time class="dt-published" datetime="2022-10-25T11:42:03.000Z" itemprop="datePublished">2022-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/hexo-blog/categories/CICD/">CICD</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/hexo-blog/2022/10/25/line-notify/">Line 發送通知 &amp; 綁定聊天室</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <br/>
+
+<h2 id="1-登入-Line-Notify"><a href="#1-登入-Line-Notify" class="headerlink" title="1. 登入 Line Notify"></a>1. 登入 Line Notify</h2><p><a target="_blank" rel="noopener" href="https://notify-bot.line.me/">https://notify-bot.line.me/</a><br><img src="/hexo-blog/2022/10/25/line-notify/line-notify.png" alt="Line Notify" title="lineNotifyLogo"></p>
+<h2 id="2-進入個人頁面"><a href="#2-進入個人頁面" class="headerlink" title="2. 進入個人頁面"></a>2. 進入個人頁面</h2><p><a target="_blank" rel="noopener" href="https://notify-bot.line.me/my/">https://notify-bot.line.me/my/</a><br><br></p>
+<h2 id="3-發行存取權杖"><a href="#3-發行存取權杖" class="headerlink" title="3. 發行存取權杖"></a>3. 發行存取權杖</h2><p>點擊”發行權杖”<br><img src="/hexo-blog/2022/10/25/line-notify/public-token.png" alt="發行權杖" title="publicToken"><br><br></p>
+<h2 id="4-設定功能"><a href="#4-設定功能" class="headerlink" title="4. 設定功能"></a>4. 設定功能</h2><ol>
+<li>填寫名稱: 傳送訊息時的顯示名稱</li>
+<li>選取要接收通知的聊天室<br><img src="/hexo-blog/2022/10/25/line-notify/choose-room.png" alt="設定功能" title="chooseRoom"><br></li>
+</ol>
+<h2 id="5-產生權杖"><a href="#5-產生權杖" class="headerlink" title="5. 產生權杖"></a>5. 產生權杖</h2><p>將權杖複製起來, 此權杖為該聊天室專用<br><img src="/hexo-blog/2022/10/25/line-notify/copy-token.png" alt="產生權杖" title="copyToken"><br><br></p>
+<h2 id="6-將-Line-Notify-邀請至該聊天室"><a href="#6-將-Line-Notify-邀請至該聊天室" class="headerlink" title="6. 將 Line Notify 邀請至該聊天室"></a>6. 將 Line Notify 邀請至該聊天室</h2><p><img src="/hexo-blog/2022/10/25/line-notify/invite-line-notify.png" alt="邀請 Line Notify" title="inviteLineNotify"><br><br></p>
+<h2 id="7-藉由-curl-傳送通知"><a href="#7-藉由-curl-傳送通知" class="headerlink" title="7. 藉由 curl 傳送通知"></a>7. 藉由 curl 傳送通知</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Linux</span></span><br><span class="line">curl -X POST https://notify-api.line.me/api/notify -H <span class="string">&#x27;Authorization: Bearer &lt;your-token&gt;&#x27;</span> -F <span class="string">&quot;message=妳好～&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Jenkins</span></span><br><span class="line">stage(<span class="string">&#x27;Notify&#x27;</span>) &#123;</span><br><span class="line">  steps &#123;</span><br><span class="line">    sh <span class="string">&quot;&quot;</span><span class="string">&quot; </span></span><br><span class="line"><span class="string">      curl -X POST https://notify-api.line.me/api/notify \</span></span><br><span class="line"><span class="string">      -H &#x27;Authorization: Bearer &lt;your-token&gt;&#x27; \</span></span><br><span class="line"><span class="string">      -F &quot;</span>message=妳好～<span class="string">&quot;</span></span><br><span class="line"><span class="string">    &quot;</span><span class="string">&quot;&quot;</span> </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br>
+
+
+<h2 id="8-登登登"><a href="#8-登登登" class="headerlink" title="8. 登登登"></a>8. 登登登</h2><p><img src="/hexo-blog/2022/10/25/line-notify/line-notify-send-message.png" alt="在聊天室接收通知吧 ( 123為設定功能時填寫的名稱 )" title="lineNotifySendMessage"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/25/line-notify/" data-id="cla0ok73e000oc6oydxb3dtfr" data-title="Line 發送通知 &amp; 綁定聊天室" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/Line/" rel="tag">Line</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-browser-zoom" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/hexo-blog/2022/10/24/browser-zoom/" class="article-date">
   <time class="dt-published" datetime="2022-10-24T22:12:39.000Z" itemprop="datePublished">2022-10-24</time>
@@ -94,8 +151,8 @@
       <header class="article-header">
         
   
-    <h1 class="p-name article-title" itemprop="headline name">
-      網頁縮放程式碼 Browser Zoom
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/hexo-blog/2022/10/24/browser-zoom/">網頁縮放程式碼 Browser Zoom</a>
     </h1>
   
 
@@ -118,26 +175,41 @@
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/hexo-blog/2022/10/25/line-notify/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Line 發送通知 &amp; 綁定聊天室
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
 </article>
 
 
-</section>
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/hexo-blog/">&laquo; Prev</a><a class="page-number" href="/hexo-blog/">1</a><span class="page-number current">2</span>
+  </nav>
+
+
+<style>
+  #header {
+    height: 100vh;
+    transition: height 500ms ease-out;
+  }
+
+  #header.height-300 {
+    height: 300px;
+  }
+</style>
+<script>
+  document.addEventListener('scroll', function () {
+    const header = document.getElementById('header');
+    const headerTop = header.getBoundingClientRect().top;
+    if (headerTop >= 0) {
+      header.classList.remove('height-300');
+    } else {
+      header.classList.add('height-300');
+    }
+  });
+  document.dispatchEvent(new Event('scroll'));
+</script></section>
         
           <aside id="sidebar">
   

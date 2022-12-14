@@ -25,7 +25,7 @@ tags: Git
 
 ### commit and branch 關係圖
 黑點代表 commit，藍線及紅線代表 branch
-![commit and branch](commit-and-branch.png "commit and branch")
+![](commit-and-branch.png "commit and branch")
 
 ### merge
 使用 merge，可以合併多個歷史記錄。

@@ -52,7 +52,7 @@ tags: Git
 
 </div>
 
-執行合併時，使用 non fast-forward 參數選項，即使是可以 fast-forward 的合併也會建立新的提交並合併喔。
+執行合併時，使用 non fast-forward 參數選項(git merge --no-ff)，即使是可以 fast-forward 的合併也會建立新的提交並合併喔。
 
 ![](merge-non-ff.png "merge-non-ff")
 

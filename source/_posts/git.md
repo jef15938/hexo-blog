@@ -101,3 +101,9 @@ git reset C0 --hard
 <br/>
 
 <div style="color: red">要特別注意斷頭 ( detached head ) 狀況！<br/>如果有其他人也正在使用 main 分支做開發，對於他來說是接著 C3 commit 繼續開發，但是 reset head 到 C0 後，C3 的 commit 就跟 main 分支脫鉤了，導致該開發人員的後續 commit 找不到所屬分支，產生"斷頭"</div>
+
+---
+
+## 附錄
+
+git 操作練習可以使用 [git 遊樂場](https://learngitbranching.js.org/?locale=zh_TW)

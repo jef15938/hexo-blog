@@ -74,6 +74,101 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/hexo-blog/2022/12/13/git/" class="article-date">
+  <time class="dt-published" datetime="2022-12-13T19:15:18.000Z" itemprop="datePublished">2022-12-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/hexo-blog/categories/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/hexo-blog/2022/12/13/git/">Git 使用手冊</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <br/>
+
+<div style="padding: 20px; background: #FFF2CB">
+部分內容參考自 <a href="https://backlog.com/git-tutorial/tw/" target="_blank">連猴子都能懂的Git入門指南</a>
+</div>
+
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><p>一個分散式版本控制軟體，工程師必備技能</p>
+<h2 id="基本知識"><a href="#基本知識" class="headerlink" title="基本知識"></a>基本知識</h2><h3 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h3><p>將程式改動從暫存區提交到儲存庫</p>
+<h3 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h3><p>分支: 將零碎的 commit 整合成一個有順序有意義的組合<br>一個分支代表一條獨立的開發線</p>
+<h3 id="commit-and-branch-關係圖"><a href="#commit-and-branch-關係圖" class="headerlink" title="commit and branch 關係圖"></a>commit and branch 關係圖</h3><p>黑點代表 commit，藍線及紅線代表 branch<br><img src="/hexo-blog/2022/12/13/git/commit-and-branch.png" alt="commit and branch" title="commit and branch"></p>
+<h3 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h3><p>使用 merge，可以合併多個歷史記錄。</p>
+<p>如下圖所示 bugfix 分支是從 master 分支分開出來的。</p>
+<p><img src="/hexo-blog/2022/12/13/git/maser-bugfix-branch.png" alt="maser 跟 bugfix 分支" title="maser-bugfix-branch"></p>
+<p>合併 bugfix 分支到 master 分支時， 如果master 分支的狀態是沒有更改過的話，那麼這個合併是非常簡單的。 bugfix 分支的歷史記錄包含了 master 分支的歷史記錄，所以只要把 master 移動到 bugfix 分支就可以導入 bugfix 分支的內容。這樣的合併被稱為 <b>fast-forward（快轉）</b>合併。</p>
+<p><img src="/hexo-blog/2022/12/13/git/merge-ff.png" alt="maser merge bugfix (fast-forward)" title="merge-ff"></p>
+<p>但是，master 分支的歷史記錄有可能在 bugfix 分支分開後有新的修改。這時候，要把 master 分支的修改內容和 bugfix 分支的修改內容匯合起來。</p>
+<p><img src="/hexo-blog/2022/12/13/git/merge-no-ff-branch.png" alt="maser 跟 bugfix 分支" title="merge-no-ff-branch"></p>
+<p>匯合兩個修改時會產生一個名為「合併提交」的提交。Master的位置會被更新到新建立的合併提交上。</p>
+<p><img src="/hexo-blog/2022/12/13/git/merge-no-ff.png" alt="maser merge bugfix (non-fast-forward)" title="merge-no-ff"></p>
+<div style="padding: 1px 20px 20px 20px; background: #FFF2CB">
+<div style="margin-left: 0">
+
+<p><img src="/hexo-blog/2022/12/13/git/note.png" title="note"></p>
+</div>
+
+<p>執行合併時，使用 non fast-forward 參數選項，即使是可以 fast-forward 的合併也會建立新的提交並合併喔。</p>
+<p><img src="/hexo-blog/2022/12/13/git/merge-non-ff.png" title="merge-non-ff"></p>
+<p>執行 non fast-forward 的合併後，分支會維持原狀，要調查在這個分支裡的操作就容易多了。</p>
+</div>
+
+<hr>
+<h2 id="使用情境"><a href="#使用情境" class="headerlink" title="使用情境"></a>使用情境</h2><h3 id="1-想要查看從-Commit-A-到-Commit-B-的所有程式變動，怎麼做？"><a href="#1-想要查看從-Commit-A-到-Commit-B-的所有程式變動，怎麼做？" class="headerlink" title="1. 想要查看從 Commit A 到 Commit B 的所有程式變動，怎麼做？"></a>1. 想要查看從 Commit A 到 Commit B 的所有程式變動，怎麼做？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset B --hard</span><br><span class="line">git reset A</span><br></pre></td></tr></table></figure>
+
+<p>執行完會看到以下畫面，左邊代表三支檔案變更了，右邊區塊可以看到哪支程式在A&#x2F;B的變化</p>
+<p><img src="/hexo-blog/2022/12/13/git/git-reset-a-b.png" title="git-reset-a-b"></p>
+<div style="color: red">查看完畢後，記得"不要" commit 跟 push 喔</div>
+<br>
+
+<h3 id="2-如果要取消某-幾-個-commit-點，怎麼做？"><a href="#2-如果要取消某-幾-個-commit-點，怎麼做？" class="headerlink" title="2. 如果要取消某(幾)個 commit 點，怎麼做？"></a>2. 如果要取消某(幾)個 commit 點，怎麼做？</h3><img style="max-height: 300px" src="/hexo-blog/2022/12/13/git/git-log.png">
+
+<p>假設想取消 C1 跟 C2 的變動,<br>有兩種方法:</p>
+<h4 id="方法1-建立新的-commit-點-建議"><a href="#方法1-建立新的-commit-點-建議" class="headerlink" title="方法1: 建立新的 commit 點 (建議)"></a>方法1: 建立新的 commit 點 (建議)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git revert C2</span><br><span class="line">git revert C1</span><br></pre></td></tr></table></figure>
+<img style="max-height: 500px" src="/hexo-blog/2022/12/13/git/git-revert.png">
+
+<h4 id="方法2-直接把分支-head-移動到-CO"><a href="#方法2-直接把分支-head-移動到-CO" class="headerlink" title="方法2: 直接把分支 head 移動到 CO"></a>方法2: 直接把分支 head 移動到 CO</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset C0 --hard</span><br></pre></td></tr></table></figure>
+<p>--hard 參數代表把變動的檔案都清除</p>
+<img style="max-height: 300px" src="/hexo-blog/2022/12/13/git/git-reset.png">
+
+<br/>
+
+<div style="color: red">要特別注意斷頭 ( detached head ) 狀況！<br/>如果有其他人也正在使用 main 分支做開發，對於他來說是接著 C3 commit 繼續開發，但是 reset head 到 C0 後，C3 的 commit 就跟 main 分支脫鉤了，導致該開發人員的後續 commit 找不到所屬分支，產生"斷頭"</div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/12/13/git/" data-id="clbn608rk000oe8ot4e6c3t9f" data-title="Git 使用手冊" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/Git/" rel="tag">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-jenkins" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/hexo-blog/2022/12/13/jenkins/" class="article-date">
@@ -106,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/12/13/jenkins/" data-id="clbm43umf000od5mz3rt05f11" data-title="Jenkins 使用手冊" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/12/13/jenkins/" data-id="clbn608rl000qe8otatna2vh1" data-title="Jenkins 使用手冊" class="article-share-link">Share</a>
       
       
       
@@ -155,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/29/add-calendar/" data-id="clbm43ulz0001d5mz5nwdgtxe" data-title="新增原生行事曆項目" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/29/add-calendar/" data-id="clbn608r10001e8ot8jpp77t5" data-title="新增原生行事曆項目" class="article-share-link">Share</a>
       
       
       
@@ -204,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/22/custom-list-style-counter/" data-id="clbm43um8000ad5mz1iet59pr" data-title="客製化列點樣式及計數規則" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/22/custom-list-style-counter/" data-id="clbn608r9000ae8otd1rvcnck" data-title="客製化列點樣式及計數規則" class="article-share-link">Share</a>
       
       
       
@@ -292,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/performance-test/" data-id="clbm43umn0012d5mzfvr752h7" data-title="效能測試 Performance Test" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/performance-test/" data-id="clbn608s5001ve8ot1od97bqm" data-title="效能測試 Performance Test" class="article-share-link">Share</a>
       
       
       
@@ -343,7 +438,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/neon-sign-card/" data-id="clbm43umk000xd5mz95d2gru9" data-title="霓虹燈卡片" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/neon-sign-card/" data-id="clbn608rp0012e8ot5rca1ynm" data-title="霓虹燈卡片" class="article-share-link">Share</a>
       
       
       
@@ -394,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/day-night-simulation/" data-id="clbm43um9000cd5mzbgflhx6z" data-title="黑夜白天 switch 效果" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/day-night-simulation/" data-id="clbn608rf000ce8ot8wnrdxlv" data-title="黑夜白天 switch 效果" class="article-share-link">Share</a>
       
       
       
@@ -445,7 +540,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/donut-loading/" data-id="clbm43umc000jd5mzdgtx7ojl" data-title="甜甜圈 Loading" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/donut-loading/" data-id="clbn608ri000je8ot7drvhdfz" data-title="甜甜圈 Loading" class="article-share-link">Share</a>
       
       
       
@@ -496,7 +591,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/3d-card/" data-id="clbm43ulu0000d5mzhlgx8uf7" data-title="3D 效果卡片" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/3d-card/" data-id="clbn608qw0000e8ot432tgjh9" data-title="3D 效果卡片" class="article-share-link">Share</a>
       
       
       
@@ -545,60 +640,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/last-row-mixin/" data-id="clbm43umg000qd5mz2vd8gqy5" data-title="mixin 選取到最後一排" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/last-row-mixin/" data-id="clbn608rn000ue8otgcxv2hhh" data-title="mixin 選取到最後一排" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/SCSS-Tricks/" rel="tag">SCSS Tricks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/Source-Code/" rel="tag">Source Code</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-choose-target-dom" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/hexo-blog/2022/11/03/choose-target-dom/" class="article-date">
-  <time class="dt-published" datetime="2022-11-03T10:22:00.000Z" itemprop="datePublished">2022-11-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/hexo-blog/categories/Static-UI/">Static UI</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/hexo-blog/2022/11/03/choose-target-dom/">:nth-child() 選取特定區間物件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="使用-CSS-nth-child-來選取開頭第-x-個到倒數第-y-個"><a href="#使用-CSS-nth-child-來選取開頭第-x-個到倒數第-y-個" class="headerlink" title="使用 CSS :nth-child() 來選取開頭第 x 個到倒數第 y 個"></a>使用 CSS :nth-child() 來選取開頭第 x 個到倒數第 y 個</h2><p class="codepen" data-height="500" data-default-tab="result" data-slug-hash="GRmQeRO" data-user="jef15938" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/jef15938/pen/GRmQeRO">
-  :nth-child() 選取特定區間物件</a> by jef15938 (<a target="_blank" rel="noopener" href="https://codepen.io/jef15938">@jef15938</a>)
-  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/choose-target-dom/" data-id="clbm43um40005d5mz4ai4bfcl" data-title=":nth-child() 選取特定區間物件" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/CSS-Tricks/" rel="tag">CSS Tricks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/Source-Code/" rel="tag">Source Code</a></li></ul>
 
     </footer>
   </div>
@@ -645,7 +691,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/2D-Animation/">2D Animation</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/3D-Animation/">3D Animation</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/CICD/">CICD</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Calendar/">Calendar</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Functional-Javascript/">Functional Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Others/">Others</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Performance/">Performance</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Static-UI/">Static UI</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/2D-Animation/">2D Animation</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/3D-Animation/">3D Animation</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/CICD/">CICD</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Calendar/">Calendar</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Functional-Javascript/">Functional Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Others/">Others</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Performance/">Performance</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Static-UI/">Static UI</a></li></ul>
     </div>
   </div>
 
@@ -655,7 +701,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/CSS-Tricks/" rel="tag">CSS Tricks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Line/" rel="tag">Line</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/SCSS-Tricks/" rel="tag">SCSS Tricks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Source-Code/" rel="tag">Source Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Todo/" rel="tag">Todo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Tool-Introduce/" rel="tag">Tool Introduce</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/CSS-Tricks/" rel="tag">CSS Tricks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Line/" rel="tag">Line</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/SCSS-Tricks/" rel="tag">SCSS Tricks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Source-Code/" rel="tag">Source Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Todo/" rel="tag">Todo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Tool-Introduce/" rel="tag">Tool Introduce</a></li></ul>
     </div>
   </div>
 
@@ -665,7 +711,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/hexo-blog/tags/CSS-Tricks/" style="font-size: 15px;">CSS Tricks</a> <a href="/hexo-blog/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/hexo-blog/tags/Line/" style="font-size: 10px;">Line</a> <a href="/hexo-blog/tags/SCSS-Tricks/" style="font-size: 10px;">SCSS Tricks</a> <a href="/hexo-blog/tags/Source-Code/" style="font-size: 20px;">Source Code</a> <a href="/hexo-blog/tags/Todo/" style="font-size: 10px;">Todo</a> <a href="/hexo-blog/tags/Tool-Introduce/" style="font-size: 10px;">Tool Introduce</a>
+      <a href="/hexo-blog/tags/CSS-Tricks/" style="font-size: 15px;">CSS Tricks</a> <a href="/hexo-blog/tags/Git/" style="font-size: 10px;">Git</a> <a href="/hexo-blog/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/hexo-blog/tags/Line/" style="font-size: 10px;">Line</a> <a href="/hexo-blog/tags/SCSS-Tricks/" style="font-size: 10px;">SCSS Tricks</a> <a href="/hexo-blog/tags/Source-Code/" style="font-size: 20px;">Source Code</a> <a href="/hexo-blog/tags/Todo/" style="font-size: 10px;">Todo</a> <a href="/hexo-blog/tags/Tool-Introduce/" style="font-size: 10px;">Tool Introduce</a>
     </div>
   </div>
 
@@ -687,6 +733,10 @@
       <ul>
         
           <li>
+            <a href="/hexo-blog/2022/12/13/git/">Git 使用手冊</a>
+          </li>
+        
+          <li>
             <a href="/hexo-blog/2022/12/13/jenkins/">Jenkins 使用手冊</a>
           </li>
         
@@ -700,10 +750,6 @@
         
           <li>
             <a href="/hexo-blog/2022/11/03/performance-test/">效能測試 Performance Test</a>
-          </li>
-        
-          <li>
-            <a href="/hexo-blog/2022/11/03/neon-sign-card/">霓虹燈卡片</a>
           </li>
         
       </ul>

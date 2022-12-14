@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Git 使用手冊 | 彭彭的飛行羊窩</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="部分內容參考自 連猴子都能懂的Git入門指南   Git一個分散式版本控制軟體，工程師必備技能 基本知識commit將程式改動從暫存區提交到儲存庫 branch分支: 將零碎的 commit 整合成一個有順序有意義的組合一個分支代表一條獨立的開發線 commit and branch 關係圖黑點代表 commit，藍線及紅線代表 branch merge使用 merge，可以合併多個歷史記錄">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git 使用手冊">
+<meta property="og:url" content="https://jef15938.github.io/hexo-blog/2022/12/13/git/index.html">
+<meta property="og:site_name" content="你好, 我是彭彭">
+<meta property="og:description" content="部分內容參考自 連猴子都能懂的Git入門指南   Git一個分散式版本控制軟體，工程師必備技能 基本知識commit將程式改動從暫存區提交到儲存庫 branch分支: 將零碎的 commit 整合成一個有順序有意義的組合一個分支代表一條獨立的開發線 commit and branch 關係圖黑點代表 commit，藍線及紅線代表 branch merge使用 merge，可以合併多個歷史記錄">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/12/13/git/commit-and-branch.png">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/12/13/git/maser-bugfix-branch.png">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/12/13/git/merge-ff.png">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/12/13/git/merge-no-ff-branch.png">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/12/13/git/merge-no-ff.png">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/12/13/git/note.png">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/12/13/git/merge-non-ff.png">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/12/13/git/git-reset-a-b.png">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/12/13/git/git-log.png">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/12/13/git/git-revert.png">
+<meta property="og:image" content="https://jef15938.github.io/hexo-blog/2022/12/13/git/git-reset.png">
+<meta property="article:published_time" content="2022-12-13T19:15:18.000Z">
+<meta property="article:modified_time" content="2022-12-14T04:40:49.322Z">
+<meta property="article:author" content="PongPong">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jef15938.github.io/hexo-blog/2022/12/13/git/commit-and-branch.png">
+  
+    <link rel="alternate" href="/hexo-blog/atom.xml" title="你好, 我是彭彭" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/hexo-blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/hexo-blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/hexo-blog/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/hexo-blog/" id="logo">你好, 我是彭彭</a>
+      </h1>
+      
+      <h2 id="subtitle-wrap">
+        <a href="/hexo-blog/" id="subtitle">一個擁有浪漫靈魂的工程師</a>
+      </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+        <a class="main-nav-link" href="/hexo-blog/">Home</a>
+        
+        <a class="main-nav-link" href="/hexo-blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-rss-link" class="nav-icon" href="/hexo-blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jef15938.github.io/hexo-blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/hexo-blog/2022/12/13/git/" class="article-date">
+  <time class="dt-published" datetime="2022-12-13T19:15:18.000Z" itemprop="datePublished">2022-12-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/hexo-blog/categories/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Git 使用手冊
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <br/>
+
+<div style="padding: 20px; background: #FFF2CB">
+部分內容參考自 <a href="https://backlog.com/git-tutorial/tw/" target="_blank">連猴子都能懂的Git入門指南</a>
+</div>
+
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><p>一個分散式版本控制軟體，工程師必備技能</p>
+<h2 id="基本知識"><a href="#基本知識" class="headerlink" title="基本知識"></a>基本知識</h2><h3 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h3><p>將程式改動從暫存區提交到儲存庫</p>
+<h3 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h3><p>分支: 將零碎的 commit 整合成一個有順序有意義的組合<br>一個分支代表一條獨立的開發線</p>
+<h3 id="commit-and-branch-關係圖"><a href="#commit-and-branch-關係圖" class="headerlink" title="commit and branch 關係圖"></a>commit and branch 關係圖</h3><p>黑點代表 commit，藍線及紅線代表 branch<br><img src="/hexo-blog/2022/12/13/git/commit-and-branch.png" alt="commit and branch" title="commit and branch"></p>
+<h3 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h3><p>使用 merge，可以合併多個歷史記錄。</p>
+<p>如下圖所示 bugfix 分支是從 master 分支分開出來的。</p>
+<p><img src="/hexo-blog/2022/12/13/git/maser-bugfix-branch.png" alt="maser 跟 bugfix 分支" title="maser-bugfix-branch"></p>
+<p>合併 bugfix 分支到 master 分支時， 如果master 分支的狀態是沒有更改過的話，那麼這個合併是非常簡單的。 bugfix 分支的歷史記錄包含了 master 分支的歷史記錄，所以只要把 master 移動到 bugfix 分支就可以導入 bugfix 分支的內容。這樣的合併被稱為 <b>fast-forward（快轉）</b>合併。</p>
+<p><img src="/hexo-blog/2022/12/13/git/merge-ff.png" alt="maser merge bugfix (fast-forward)" title="merge-ff"></p>
+<p>但是，master 分支的歷史記錄有可能在 bugfix 分支分開後有新的修改。這時候，要把 master 分支的修改內容和 bugfix 分支的修改內容匯合起來。</p>
+<p><img src="/hexo-blog/2022/12/13/git/merge-no-ff-branch.png" alt="maser 跟 bugfix 分支" title="merge-no-ff-branch"></p>
+<p>匯合兩個修改時會產生一個名為「合併提交」的提交。Master的位置會被更新到新建立的合併提交上。</p>
+<p><img src="/hexo-blog/2022/12/13/git/merge-no-ff.png" alt="maser merge bugfix (non-fast-forward)" title="merge-no-ff"></p>
+<div style="padding: 1px 20px 20px 20px; background: #FFF2CB">
+<div style="margin-left: 0">
+
+<p><img src="/hexo-blog/2022/12/13/git/note.png" title="note"></p>
+</div>
+
+<p>執行合併時，使用 non fast-forward 參數選項，即使是可以 fast-forward 的合併也會建立新的提交並合併喔。</p>
+<p><img src="/hexo-blog/2022/12/13/git/merge-non-ff.png" title="merge-non-ff"></p>
+<p>執行 non fast-forward 的合併後，分支會維持原狀，要調查在這個分支裡的操作就容易多了。</p>
+</div>
+
+<hr>
+<h2 id="使用情境"><a href="#使用情境" class="headerlink" title="使用情境"></a>使用情境</h2><h3 id="1-想要查看從-Commit-A-到-Commit-B-的所有程式變動，怎麼做？"><a href="#1-想要查看從-Commit-A-到-Commit-B-的所有程式變動，怎麼做？" class="headerlink" title="1. 想要查看從 Commit A 到 Commit B 的所有程式變動，怎麼做？"></a>1. 想要查看從 Commit A 到 Commit B 的所有程式變動，怎麼做？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset B --hard</span><br><span class="line">git reset A</span><br></pre></td></tr></table></figure>
+
+<p>執行完會看到以下畫面，左邊代表三支檔案變更了，右邊區塊可以看到哪支程式在A&#x2F;B的變化</p>
+<p><img src="/hexo-blog/2022/12/13/git/git-reset-a-b.png" title="git-reset-a-b"></p>
+<div style="color: red">查看完畢後，記得"不要" commit 跟 push 喔</div>
+<br>
+
+<h3 id="2-如果要取消某-幾-個-commit-點，怎麼做？"><a href="#2-如果要取消某-幾-個-commit-點，怎麼做？" class="headerlink" title="2. 如果要取消某(幾)個 commit 點，怎麼做？"></a>2. 如果要取消某(幾)個 commit 點，怎麼做？</h3><img style="max-height: 300px" src="/hexo-blog/2022/12/13/git/git-log.png">
+
+<p>假設想取消 C1 跟 C2 的變動,<br>有兩種方法:</p>
+<h4 id="方法1-建立新的-commit-點-建議"><a href="#方法1-建立新的-commit-點-建議" class="headerlink" title="方法1: 建立新的 commit 點 (建議)"></a>方法1: 建立新的 commit 點 (建議)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git revert C2</span><br><span class="line">git revert C1</span><br></pre></td></tr></table></figure>
+<img style="max-height: 500px" src="/hexo-blog/2022/12/13/git/git-revert.png">
+
+<h4 id="方法2-直接把分支-head-移動到-CO"><a href="#方法2-直接把分支-head-移動到-CO" class="headerlink" title="方法2: 直接把分支 head 移動到 CO"></a>方法2: 直接把分支 head 移動到 CO</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset C0 --hard</span><br></pre></td></tr></table></figure>
+<p>--hard 參數代表把變動的檔案都清除</p>
+<img style="max-height: 300px" src="/hexo-blog/2022/12/13/git/git-reset.png">
+
+<br/>
+
+<div style="color: red">要特別注意斷頭 ( detached head ) 狀況！<br/>如果有其他人也正在使用 main 分支做開發，對於他來說是接著 C3 commit 繼續開發，但是 reset head 到 C0 後，C3 的 commit 就跟 main 分支脫鉤了，導致該開發人員的後續 commit 找不到所屬分支，產生"斷頭"</div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/12/13/git/" data-id="clbn608rk000oe8ot4e6c3t9f" data-title="Git 使用手冊" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/Git/" rel="tag">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/hexo-blog/2022/12/13/jenkins/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Jenkins 使用手冊</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/2D-Animation/">2D Animation</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/3D-Animation/">3D Animation</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/CICD/">CICD</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Calendar/">Calendar</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Functional-Javascript/">Functional Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Others/">Others</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Performance/">Performance</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Static-UI/">Static UI</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/CSS-Tricks/" rel="tag">CSS Tricks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Line/" rel="tag">Line</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/SCSS-Tricks/" rel="tag">SCSS Tricks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Source-Code/" rel="tag">Source Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Todo/" rel="tag">Todo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Tool-Introduce/" rel="tag">Tool Introduce</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/hexo-blog/tags/CSS-Tricks/" style="font-size: 15px;">CSS Tricks</a> <a href="/hexo-blog/tags/Git/" style="font-size: 10px;">Git</a> <a href="/hexo-blog/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/hexo-blog/tags/Line/" style="font-size: 10px;">Line</a> <a href="/hexo-blog/tags/SCSS-Tricks/" style="font-size: 10px;">SCSS Tricks</a> <a href="/hexo-blog/tags/Source-Code/" style="font-size: 20px;">Source Code</a> <a href="/hexo-blog/tags/Todo/" style="font-size: 10px;">Todo</a> <a href="/hexo-blog/tags/Tool-Introduce/" style="font-size: 10px;">Tool Introduce</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2022/10/">October 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/hexo-blog/2022/12/13/git/">Git 使用手冊</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-blog/2022/12/13/jenkins/">Jenkins 使用手冊</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-blog/2022/11/29/add-calendar/">新增原生行事曆項目</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-blog/2022/11/22/custom-list-style-counter/">客製化列點樣式及計數規則</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-blog/2022/11/03/performance-test/">效能測試 Performance Test</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 PongPong<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/hexo-blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/hexo-blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/hexo-blog/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/hexo-blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/hexo-blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

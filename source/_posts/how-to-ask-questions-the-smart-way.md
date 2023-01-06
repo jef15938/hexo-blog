@@ -1,4 +1,10 @@
-# 提問的智慧
+---
+title: 提問的智慧
+date: 2023-01-06 12:19:36
+categories: Knowledge
+tags: [Ask Smart]
+---
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-35-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->

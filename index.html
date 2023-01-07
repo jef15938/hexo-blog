@@ -74,6 +74,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-javascript-curry" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/hexo-blog/2023/01/07/javascript-curry/" class="article-date">
+  <time class="dt-published" datetime="2023-01-07T10:23:51.000Z" itemprop="datePublished">2023-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/hexo-blog/categories/Functional-Javascript/">Functional Javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/hexo-blog/2023/01/07/javascript-curry/">javascript 柯里化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <br/>
+
+<h2 id="柯里化"><a href="#柯里化" class="headerlink" title="柯里化"></a>柯里化</h2><blockquote>
+可以理解為提前接收部分參數，延遲執行，不立即輸出結果，而是返回一個接受剩餘參數的函數。因為這樣的特性，也被稱為部分計算函數。
+</blockquote>
+
+<br/>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 數字加總柯里化</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params">x</span>) &#123;</span><br><span class="line">    <span class="comment">// 第一個參數都沒傳, 回傳 0</span></span><br><span class="line">    <span class="keyword">if</span> (x === <span class="literal">undefined</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> total = x;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">sumInside</span>(<span class="params">y</span>) &#123;</span><br><span class="line">        <span class="comment">// 設立 function 執行終點, 無傳入參數的話, 回傳加總結果</span></span><br><span class="line">        <span class="keyword">if</span> (y === <span class="literal">undefined</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> total;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="comment">// 有傳入參數的話, 將參數加到 total, 並回傳&quot;接收一個參數的 function&quot;(柯里化的核心)</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            total += y;</span><br><span class="line">            <span class="keyword">return</span> sumInside;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">sum</span>() <span class="comment">// 0</span></span><br><span class="line"><span class="title function_">sum</span>(<span class="number">100</span>)() <span class="comment">// 100</span></span><br><span class="line"><span class="title function_">sum</span>(<span class="number">100</span>)(<span class="number">30</span>)() <span class="comment">// 130</span></span><br><span class="line"><span class="title function_">sum</span>(<span class="number">100</span>)(<span class="number">30</span>)(-<span class="number">50</span>)() <span class="comment">// 80</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jef15938.github.io/hexo-blog/2023/01/07/javascript-curry/" data-id="clclc4w6c000ud5ok7s1wewgm" data-title="javascript 柯里化" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/Source-Code/" rel="tag">Source Code</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-how-to-ask-questions-the-smart-way" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/hexo-blog/2023/01/06/how-to-ask-questions-the-smart-way/" class="article-date">
@@ -570,7 +622,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2023/01/06/how-to-ask-questions-the-smart-way/" data-id="clck0fuxl000qevokf41dhx01" data-title="提問的智慧" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2023/01/06/how-to-ask-questions-the-smart-way/" data-id="clclc4w6b000qd5ok4129431d" data-title="提問的智慧" class="article-share-link">Share</a>
       
       
       
@@ -694,7 +746,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/12/13/git/" data-id="clck0fuxk000oevokcqt26xn8" data-title="Git 使用手冊" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/12/13/git/" data-id="clclc4w6a000od5ok3rl26c3t" data-title="Git 使用手冊" class="article-share-link">Share</a>
       
       
       
@@ -740,7 +792,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/12/13/jenkins/" data-id="clck0fuxn000uevok5s6m4b4e" data-title="Jenkins 使用手冊" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/12/13/jenkins/" data-id="clclc4w6d000xd5okdev05tcc" data-title="Jenkins 使用手冊" class="article-share-link">Share</a>
       
       
       
@@ -789,7 +841,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/29/add-calendar/" data-id="clck0fux50001evok96hf034e" data-title="新增原生行事曆項目" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/29/add-calendar/" data-id="clclc4w5u0001d5ok0412heai" data-title="新增原生行事曆項目" class="article-share-link">Share</a>
       
       
       
@@ -838,7 +890,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/22/custom-list-style-counter/" data-id="clck0fuxe000aevokcexn505a" data-title="客製化列點樣式及計數規則" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/22/custom-list-style-counter/" data-id="clclc4w63000ad5okh8g25coj" data-title="客製化列點樣式及計數規則" class="article-share-link">Share</a>
       
       
       
@@ -926,7 +978,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/performance-test/" data-id="clck0fuy10020evok41mla7ww" data-title="效能測試 Performance Test" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/performance-test/" data-id="clclc4w6k001cd5okbdsq5enh" data-title="效能測試 Performance Test" class="article-share-link">Share</a>
       
       
       
@@ -977,7 +1029,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/neon-sign-card/" data-id="clck0fuxr0014evok817q12t3" data-title="霓虹燈卡片" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/neon-sign-card/" data-id="clclc4w6g0014d5ok2fc2c3zc" data-title="霓虹燈卡片" class="article-share-link">Share</a>
       
       
       
@@ -1028,7 +1080,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/day-night-simulation/" data-id="clck0fuxf000cevokf8m4619a" data-title="黑夜白天 switch 效果" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/day-night-simulation/" data-id="clclc4w64000cd5ok4y6y3kbx" data-title="黑夜白天 switch 效果" class="article-share-link">Share</a>
       
       
       
@@ -1079,58 +1131,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/donut-loading/" data-id="clck0fuxi000jevokh2hkc00h" data-title="甜甜圈 Loading" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/Source-Code/" rel="tag">Source Code</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-3d-card" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/hexo-blog/2022/11/03/3d-card/" class="article-date">
-  <time class="dt-published" datetime="2022-11-03T10:48:33.000Z" itemprop="datePublished">2022-11-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/hexo-blog/categories/3D-Animation/">3D Animation</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/hexo-blog/2022/11/03/3d-card/">3D 效果卡片</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <br>
-
-<p class="codepen" data-height="700" data-default-tab="result" data-slug-hash="jOYzdaB" data-user="jef15938" style="height: 700px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/jef15938/pen/jOYzdaB">
-  3d 卡片效果</a> by jef15938 (<a target="_blank" rel="noopener" href="https://codepen.io/jef15938">@jef15938</a>)
-  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/3d-card/" data-id="clck0fux00000evokh1pqczgn" data-title="3D 效果卡片" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/donut-loading/" data-id="clclc4w67000jd5okdag0974q" data-title="甜甜圈 Loading" class="article-share-link">Share</a>
       
       
       
@@ -1223,6 +1224,10 @@
       <ul>
         
           <li>
+            <a href="/hexo-blog/2023/01/07/javascript-curry/">javascript 柯里化</a>
+          </li>
+        
+          <li>
             <a href="/hexo-blog/2023/01/06/how-to-ask-questions-the-smart-way/">提問的智慧</a>
           </li>
         
@@ -1236,10 +1241,6 @@
         
           <li>
             <a href="/hexo-blog/2022/11/29/add-calendar/">新增原生行事曆項目</a>
-          </li>
-        
-          <li>
-            <a href="/hexo-blog/2022/11/22/custom-list-style-counter/">客製化列點樣式及計數規則</a>
           </li>
         
       </ul>

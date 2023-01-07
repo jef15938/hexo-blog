@@ -15,6 +15,8 @@ https://valine.js.org/quickstart.html
 [~~那些在科技公司和 app 背後的資料科學~~](https://ithelp.ithome.com.tw/articles/10289786)
 [防禦性 CSS - 建立「防患未然」的匠人心態系列 第 1 篇](https://ithelp.ithome.com.tw/articles/10290783)
 [從零開始學Notion，打造你的All-in-one管理系統](https://ithelp.ithome.com.tw/articles/10291453)
+[React框架白話文運動](https://ithelp.ithome.com.tw/articles/10290610)
+[看影片-李琳山教授"信號與人生"](https://ithelp.ithome.com.tw/articles/10291428)
 
 ## 要弄懂的工具
 [domain story telling工具](https://egon.io/app/)

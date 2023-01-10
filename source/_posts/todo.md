@@ -17,6 +17,7 @@ https://valine.js.org/quickstart.html
 [從零開始學Notion，打造你的All-in-one管理系統](https://ithelp.ithome.com.tw/articles/10291453)
 [React框架白話文運動](https://ithelp.ithome.com.tw/articles/10290610)
 [看影片-李琳山教授"信號與人生"](https://ithelp.ithome.com.tw/articles/10291428)
+[和艦長一起 30 天玩轉 GitLab](https://ithelp.ithome.com.tw/articles/10215206)
 
 ## 要弄懂的工具
 [domain story telling工具](https://egon.io/app/)

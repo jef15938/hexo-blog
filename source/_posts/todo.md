@@ -22,6 +22,7 @@ https://valine.js.org/quickstart.html
 ## 要弄懂的工具
 [domain story telling工具](https://egon.io/app/)
 參考 [[DAY 02]從前從前- domain story telling 說個簡單易懂的故事](https://ithelp.ithome.com.tw/articles/10287490)
+[LinkedIn](https://www.linkedin.com/)
 
 ## 論述/投影片參考
 (你知道這是什麼嗎?-快速高效的電梯簡報)[https://ithelp.ithome.com.tw/articles/10297396]

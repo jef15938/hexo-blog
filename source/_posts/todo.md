@@ -29,3 +29,6 @@ https://valine.js.org/quickstart.html
 
 ## 資源
 ([DAY 28]自學敏捷入門-免費學習+證書的好資源分享(上))[https://ithelp.ithome.com.tw/articles/10300404]
+
+## 好文章
+[前端工程師養成手冊](https://ithelp.ithome.com.tw/articles/10190551)(2323/01/30 done)

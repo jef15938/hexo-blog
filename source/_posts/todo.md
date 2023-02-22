@@ -18,7 +18,8 @@ https://valine.js.org/quickstart.html
 [React框架白話文運動](https://ithelp.ithome.com.tw/articles/10290610)
 [看影片-李琳山教授"信號與人生"](https://ithelp.ithome.com.tw/articles/10291428)
 [和艦長一起 30 天玩轉 GitLab](https://ithelp.ithome.com.tw/articles/10215206)
-[leetcode刷題](https://ithelp.ithome.com.tw/articles/10295978)
+[leetcode刷題1](https://ithelp.ithome.com.tw/articles/10295978)
+[leetcode刷題2](https://ithelp.ithome.com.tw/articles/10298003)
 
 ## 要弄懂的工具
 [domain story telling工具](https://egon.io/app/)

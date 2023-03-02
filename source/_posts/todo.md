@@ -9,7 +9,7 @@ tags: Todo
 無後端評論系統
 https://valine.js.org/quickstart.html
 
-## 鐵人賽文章
+## 好文章
 [天羅地網：淺談 Web Tracking 的過去、現在、未來](https://ithelp.ithome.com.tw/articles/10290760)
 [敏捷路上觀察紀錄-那些好用的與歪掉的部分](https://ithelp.ithome.com.tw/articles/10287256)(2323/01/05 done)
 [~~那些在科技公司和 app 背後的資料科學~~](https://ithelp.ithome.com.tw/articles/10289786)
@@ -18,8 +18,6 @@ https://valine.js.org/quickstart.html
 [React框架白話文運動](https://ithelp.ithome.com.tw/articles/10290610)
 [看影片-李琳山教授"信號與人生"](https://ithelp.ithome.com.tw/articles/10291428)
 [和艦長一起 30 天玩轉 GitLab](https://ithelp.ithome.com.tw/articles/10215206)
-[leetcode刷題1](https://ithelp.ithome.com.tw/articles/10295978)
-[leetcode刷題2](https://ithelp.ithome.com.tw/articles/10298003)
 
 ## 要弄懂的工具
 [domain story telling工具](https://egon.io/app/)
@@ -34,3 +32,8 @@ https://valine.js.org/quickstart.html
 
 ## 好文章
 [前端工程師養成手冊](https://ithelp.ithome.com.tw/articles/10190551)(2323/01/30 done)
+
+## 程式學習
+[leetcode刷題1](https://ithelp.ithome.com.tw/articles/10295978)
+[leetcode刷題2](https://ithelp.ithome.com.tw/articles/10298003)
+[50天50個練習專案](https://github.com/bradtraversy/50projects50days)

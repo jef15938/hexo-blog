@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>如何開發 VS Code 套件 | 彭彭的飛行羊窩</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="要在你的專案中使用自己開發的 VS Code 擴展，通常需要先完成本地開發、測試和打包，然後在你的 VS Code 中安裝該擴展。以下是詳細步驟： 1. 創建自定義擴展要完全自定義懸停提示，最好的方法是創建自己的 VS Code 擴展。以下是如何從頭開始創建一個簡單的擴展：  安裝必要的工具首先，確保你已經安裝了 Node.js 和 npm（Node.js 的包管理工具）。你可以從 Node.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何開發 VS Code 套件">
+<meta property="og:url" content="https://jef15938.github.io/hexo-blog/2024/07/01/vscode-plugin-develop/index.html">
+<meta property="og:site_name" content="你好, 我是彭彭">
+<meta property="og:description" content="要在你的專案中使用自己開發的 VS Code 擴展，通常需要先完成本地開發、測試和打包，然後在你的 VS Code 中安裝該擴展。以下是詳細步驟： 1. 創建自定義擴展要完全自定義懸停提示，最好的方法是創建自己的 VS Code 擴展。以下是如何從頭開始創建一個簡單的擴展：  安裝必要的工具首先，確保你已經安裝了 Node.js 和 npm（Node.js 的包管理工具）。你可以從 Node.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-01T11:11:02.000Z">
+<meta property="article:modified_time" content="2024-07-01T03:29:24.271Z">
+<meta property="article:author" content="PongPong">
+<meta property="article:tag" content="VSCode Plugin">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/hexo-blog/atom.xml" title="你好, 我是彭彭" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/hexo-blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/hexo-blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/hexo-blog/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/hexo-blog/" id="logo">你好, 我是彭彭</a>
+      </h1>
+      
+      <h2 id="subtitle-wrap">
+        <a href="/hexo-blog/" id="subtitle">一個擁有浪漫靈魂的工程師</a>
+      </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+        <a class="main-nav-link" href="/hexo-blog/">Home</a>
+        
+        <a class="main-nav-link" href="/hexo-blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-rss-link" class="nav-icon" href="/hexo-blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jef15938.github.io/hexo-blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vscode-plugin-develop" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/hexo-blog/2024/07/01/vscode-plugin-develop/" class="article-date">
+  <time class="dt-published" datetime="2024-07-01T11:11:02.000Z" itemprop="datePublished">2024-07-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/hexo-blog/categories/VSCode/">VSCode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      如何開發 VS Code 套件
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <br/>
+
+<p>要在你的專案中使用自己開發的 VS Code 擴展，通常需要先完成本地開發、測試和打包，然後在你的 VS Code 中安裝該擴展。以下是詳細步驟：</p>
+<h2 id="1-創建自定義擴展"><a href="#1-創建自定義擴展" class="headerlink" title="1. 創建自定義擴展"></a>1. 創建自定義擴展</h2><p>要完全自定義懸停提示，最好的方法是創建自己的 VS Code 擴展。以下是如何從頭開始創建一個簡單的擴展：</p>
+<ol>
+<li>安裝必要的工具<br>首先，確保你已經安裝了 Node.js 和 npm（Node.js 的包管理工具）。你可以從 Node.js 官方網站 安裝它們。</li>
+</ol>
+<p>接下來，安裝 yo 和 generator-code，這些工具將幫助你生成 VS Code 擴展模板：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g yo generator-code</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>生成擴展模板<br>使用 yo 生成一個新的 VS Code 擴展：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yo code</span><br></pre></td></tr></table></figure>
+<p>按照提示進行操作，選擇 “New Extension (TypeScript)”，並填寫相關信息。</p>
+</li>
+<li><p>編輯擴展代碼<br>生成的擴展模板會在 src&#x2F;extension.ts 文件中包含一些基本代碼。打開這個文件，並添加以下代碼來實現懸停提示功能：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> vscode <span class="keyword">from</span> <span class="string">&#x27;vscode&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">activate</span>(<span class="params">context: vscode.ExtensionContext</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> hoverProvider = vscode.<span class="property">languages</span>.<span class="title function_">registerHoverProvider</span>(<span class="string">&#x27;plaintext&#x27;</span>, &#123;</span><br><span class="line">        <span class="title function_">provideHover</span>(<span class="params"><span class="variable language_">document</span>, position, token</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> range = <span class="variable language_">document</span>.<span class="title function_">getWordRangeAtPosition</span>(position);</span><br><span class="line">            <span class="keyword">const</span> word = <span class="variable language_">document</span>.<span class="title function_">getText</span>(range);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (word === <span class="string">&#x27;你的自定義關鍵字&#x27;</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> vscode.<span class="title class_">Hover</span>(<span class="string">&#x27;這是你的自定義懸停提示訊息&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    context.<span class="property">subscriptions</span>.<span class="title function_">push</span>(hoverProvider);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">deactivate</span>(<span class="params"></span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>在這個示例中，我們註冊了一個懸停提供者 hoverProvider，當懸停在 你的自定義關鍵字 上時，它會顯示自定義的提示訊息。</p>
+</li>
+<li><p>編譯擴展<br>在項目根目錄中運行以下命令來編譯擴展：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm run compile</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="5-開發和測試你的擴展"><a href="#5-開發和測試你的擴展" class="headerlink" title="5. 開發和測試你的擴展"></a>5. 開發和測試你的擴展</h2><p>按 F5 啟動擴展開發主機（Extension Development Host）。這將打開一個新的 VS Code 窗口，其中將加載和運行你的擴展。在這個窗口中進行測試，確保擴展正常工作。</p>
+<h2 id="6-打包擴展"><a href="#6-打包擴展" class="headerlink" title="6. 打包擴展"></a>6. 打包擴展</h2><p>在你確定擴展可以正常工作後，需要將其打包為 .vsix 文件，以便在其他項目中安裝和使用。</p>
+<p>安裝 vsce 工具：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g vsce</span><br></pre></td></tr></table></figure>
+
+
+<p>在你的擴展項目目錄中運行以下命令來打包擴展：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vsce package</span><br></pre></td></tr></table></figure>
+<p>這將生成一個 .vsix 文件，例如 my-extension-0.0.1.vsix。</p>
+<h2 id="7-安裝擴展"><a href="#7-安裝擴展" class="headerlink" title="7. 安裝擴展"></a>7. 安裝擴展</h2><p>在你的 VS Code 中安裝打包好的 .vsix 文件：</p>
+<ol>
+<li>打開 VS Code。</li>
+<li>打開命令面板 (Ctrl+Shift+P 或 Cmd+Shift+P)。</li>
+<li>輸入並選擇 Extensions: Install from VSIX…。</li>
+<li>選擇你剛才生成的 .vsix 文件進行安裝。</li>
+</ol>
+<h2 id="8-在專案中使用擴展"><a href="#8-在專案中使用擴展" class="headerlink" title="8. 在專案中使用擴展"></a>8. 在專案中使用擴展</h2><p>安裝完擴展後，你可以在你的項目中使用它。例如，如果你的擴展提供了懸停提示，打開相關文件並將滑鼠懸停在特定的代碼上，即可看到提示訊息。</p>
+<h2 id="9-發佈擴展（可選）"><a href="#9-發佈擴展（可選）" class="headerlink" title="9. 發佈擴展（可選）"></a>9. 發佈擴展（可選）</h2><p>如果你希望將擴展發佈到 Visual Studio Code Marketplace，讓其他用戶也能使用，可以按照以下步驟進行：</p>
+<ol>
+<li>登錄 Visual Studio Marketplace<br> 1.1. 登錄到 Visual Studio Marketplace。<br> 1.2. 創建或獲取一個 Personal Access Token。</li>
+<li>發佈擴展<br>在你的擴展項目目錄中運行以下命令來發佈擴展：</li>
+</ol>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vsce publish</span><br></pre></td></tr></table></figure>
+<p>你需要使用 Personal Access Token 來進行身份驗證。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jef15938.github.io/hexo-blog/2024/07/01/vscode-plugin-develop/" data-id="cly2f8mji001me6q92e087su1" data-title="如何開發 VS Code 套件" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/VSCode-Plugin/" rel="tag">VSCode Plugin</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/hexo-blog/2023/01/07/javascript-curry/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">javascript 柯里化</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/2D-Animation/">2D Animation</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/3D-Animation/">3D Animation</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/CICD/">CICD</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Calendar/">Calendar</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Functional-Javascript/">Functional Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Knowledge/">Knowledge</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Others/">Others</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Performance/">Performance</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/Static-UI/">Static UI</a></li><li class="category-list-item"><a class="category-list-link" href="/hexo-blog/categories/VSCode/">VSCode</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Ask-Smart/" rel="tag">Ask Smart</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/CSS-Tricks/" rel="tag">CSS Tricks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Line/" rel="tag">Line</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/SCSS-Tricks/" rel="tag">SCSS Tricks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Source-Code/" rel="tag">Source Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Todo/" rel="tag">Todo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/Tool-Introduce/" rel="tag">Tool Introduce</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-blog/tags/VSCode-Plugin/" rel="tag">VSCode Plugin</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/hexo-blog/tags/Ask-Smart/" style="font-size: 10px;">Ask Smart</a> <a href="/hexo-blog/tags/CSS-Tricks/" style="font-size: 15px;">CSS Tricks</a> <a href="/hexo-blog/tags/Git/" style="font-size: 10px;">Git</a> <a href="/hexo-blog/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/hexo-blog/tags/Line/" style="font-size: 10px;">Line</a> <a href="/hexo-blog/tags/SCSS-Tricks/" style="font-size: 10px;">SCSS Tricks</a> <a href="/hexo-blog/tags/Source-Code/" style="font-size: 20px;">Source Code</a> <a href="/hexo-blog/tags/Todo/" style="font-size: 10px;">Todo</a> <a href="/hexo-blog/tags/Tool-Introduce/" style="font-size: 10px;">Tool Introduce</a> <a href="/hexo-blog/tags/VSCode-Plugin/" style="font-size: 10px;">VSCode Plugin</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2022/10/">October 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/hexo-blog/2024/07/01/vscode-plugin-develop/">如何開發 VS Code 套件</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-blog/2023/01/07/javascript-curry/">javascript 柯里化</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-blog/2023/01/06/how-to-ask-questions-the-smart-way/">提問的智慧</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-blog/2022/12/13/git/">Git 使用手冊</a>
+          </li>
+        
+          <li>
+            <a href="/hexo-blog/2022/12/13/jenkins/">Jenkins 使用手冊</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 PongPong<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/hexo-blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/hexo-blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/hexo-blog/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/hexo-blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/hexo-blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

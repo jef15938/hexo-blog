@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   
   
-  <title>Tag: Ask Smart | 彭彭的飛行羊窩</title>
+  <title>彭彭的飛行羊窩</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta property="og:type" content="website">
 <meta property="og:title" content="你好, 我是彭彭">
-<meta property="og:url" content="https://jef15938.github.io/hexo-blog/tags/Ask-Smart/index.html">
+<meta property="og:url" content="https://jef15938.github.io/hexo-blog/page/3/index.html">
 <meta property="og:site_name" content="你好, 我是彭彭">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="PongPong">
@@ -70,40 +70,82 @@
       <div class="outer">
         <section id="main">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/hexo-blog/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/hexo-blog/2023/01/06/how-to-ask-questions-the-smart-way/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-01-06T12:19:36.000Z" itemprop="datePublished">Jan 6</time>
+    <article id="post-browser-zoom" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/hexo-blog/2022/10/24/browser-zoom/" class="article-date">
+  <time class="dt-published" datetime="2022-10-24T22:12:39.000Z" itemprop="datePublished">2022-10-24</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/hexo-blog/categories/Functional-Javascript/">Functional Javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/hexo-blog/2023/01/06/how-to-ask-questions-the-smart-way/">提問的智慧</a>
+      <a class="p-name article-title" href="/hexo-blog/2022/10/24/browser-zoom/">網頁縮放程式碼 Browser Zoom</a>
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <br/>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// zoomRate: 縮放倍數, 1 代表原本尺寸</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">zoom</span>(<span class="params">zoomRate</span>) &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> percent = zoomRate * <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 設定 zoom, width</span></span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">position</span> = <span class="string">&quot;relative&quot;</span>;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">zoom</span> = percent + <span class="string">&quot;%&quot;</span>;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">width</span> = percent + <span class="string">&quot;%&quot;</span>;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">overflow</span> = <span class="string">&quot;visible&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// window dispatch resize 事件, 讓有綁 resize 的元件做 rwd 縮放</span></span><br><span class="line">    <span class="keyword">var</span> resizeEvent = <span class="variable language_">window</span>.<span class="property">document</span>.<span class="title function_">createEvent</span>(<span class="string">&#x27;UIEvents&#x27;</span>); </span><br><span class="line">    resizeEvent.<span class="title function_">initUIEvent</span>(<span class="string">&#x27;resize&#x27;</span>, <span class="literal">true</span>, <span class="literal">false</span>, <span class="variable language_">window</span>, <span class="number">0</span>); </span><br><span class="line">    <span class="variable language_">window</span>.<span class="title function_">dispatchEvent</span>(resizeEvent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/24/browser-zoom/" data-id="cm5um5fdt0004h5q3deztb6wn" data-title="網頁縮放程式碼 Browser Zoom" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/Source-Code/" rel="tag">Source Code</a></li></ul>
+
+    </footer>
   </div>
+  
 </article>
-  
-  
-    </div></section>
+
+
+
   
 
 
-</section>
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/hexo-blog/page/2/">&laquo; Prev</a><a class="page-number" href="/hexo-blog/">1</a><a class="page-number" href="/hexo-blog/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+
+<style>
+  #header {
+    height: 100vh;
+    transition: height 500ms ease-out;
+  }
+
+  #header.height-300 {
+    height: 300px;
+  }
+</style>
+<script>
+  document.addEventListener('scroll', function () {
+    const header = document.getElementById('header');
+    const headerTop = header.getBoundingClientRect().top;
+    if (headerTop >= 0) {
+      header.classList.remove('height-300');
+    } else {
+      header.classList.add('height-300');
+    }
+  });
+  document.dispatchEvent(new Event('scroll'));
+</script></section>
         
           <aside id="sidebar">
   

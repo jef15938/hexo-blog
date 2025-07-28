@@ -70,6 +70,94 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-performance-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/hexo-blog/2022/11/03/performance-test/" class="article-date">
+  <time class="dt-published" datetime="2022-11-03T14:30:56.000Z" itemprop="datePublished">2022-11-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/hexo-blog/categories/Performance/">Performance</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/hexo-blog/2022/11/03/performance-test/">效能測試 Performance Test</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <div style="width:128px; height:128px">
+
+<p><img src="/hexo-blog/2022/11/03/performance-test/lighthouse.png" title="lightHouse"></p>
+</div>
+
+<h2 id="LightHouse"><a href="#LightHouse" class="headerlink" title="LightHouse"></a>LightHouse</h2><p>一個開源工具, 用來檢測 performance, accessibility, progressive web apps, SEO and more.</p>
+<h3 id="運行方式"><a href="#運行方式" class="headerlink" title="運行方式"></a>運行方式</h3><ol>
+<li>直接由 chrome dev tools 執行 <a target="_blank" rel="noopener" href="https://developer.chrome.com/docs/lighthouse/overview/#devtools">Run Lighthouse in Chrome DevTools</a></li>
+<li>使用 node command line 執行 <a target="_blank" rel="noopener" href="https://developer.chrome.com/docs/lighthouse/overview/#cli">Install and run the Node command line tool</a></li>
+<li>使用 chrome extension 執行 <a target="_blank" rel="noopener" href="https://developer.chrome.com/docs/lighthouse/overview/#extension">Run Lighthouse as a Chrome Extension</a></li>
+</ol>
+<h3 id="查看報告"><a href="#查看報告" class="headerlink" title="查看報告"></a>查看報告</h3><div style="max-width: 600px">
+
+<p><img src="/hexo-blog/2022/11/03/performance-test/lighthouse-report.png"></p>
+</div>
+
+<p>上方區塊會顯示個項目的分數, 這邊 focus 在 Performance<br>Performance 分數會由 6 個項目決定, 比重請參考 <a target="_blank" rel="noopener" href="https://web.dev/performance-scoring/?utm_source=lighthouse&utm_medium=devtools">lighthouse 計分方式</a></p>
+<h2 id="First-Contentful-Paint-FCP"><a href="#First-Contentful-Paint-FCP" class="headerlink" title="First Contentful Paint (FCP)"></a><a target="_blank" rel="noopener" href="https://web.dev/first-contentful-paint/?utm_source=lighthouse&utm_medium=unknown">First Contentful Paint (FCP)</a></h2><p>當使用者進入網站, 瀏覽器花費多少時間渲染第一個 DOM 內容(images, non-white canvas, svgs 都算, 但是 iframe 裡的任何東西都不算)</p>
+<h2 id="Speed-Index"><a href="#Speed-Index" class="headerlink" title="Speed Index"></a><a target="_blank" rel="noopener" href="https://web.dev/speed-index/?utm_source=lighthouse&utm_medium=devtools">Speed Index</a></h2><p>畫面從開始載入到載入完成, 計算中間的過程, 是否”平滑”, 可以參考<a target="_blank" rel="noopener" href="https://ypwalter.blogspot.com/2018/06/perceptual-speed-index.html">這篇</a>解釋</p>
+<h2 id="Largest-Contentful-Paint-LCP"><a href="#Largest-Contentful-Paint-LCP" class="headerlink" title="Largest Contentful Paint (LCP)"></a><a target="_blank" rel="noopener" href="https://web.dev/lighthouse-largest-contentful-paint/?utm_source=lighthouse&utm_medium=devtools">Largest Contentful Paint (LCP)</a></h2><p>使用者打開網頁後，在當前 viewport 看到的最大物件被呈現出來要多少時間</p>
+<h2 id="Time-to-Interactive-TTI"><a href="#Time-to-Interactive-TTI" class="headerlink" title="Time to Interactive (TTI)"></a><a target="_blank" rel="noopener" href="https://web.dev/interactive/?utm_source=lighthouse&utm_medium=devtools">Time to Interactive (TTI)</a></h2><p>瀏覽器花多久時間達到”完整互動”狀態, 達到”完整互動”要滿足以下條件</p>
+<ul>
+<li>The page displays useful content, which is measured by the First Contentful Paint,</li>
+<li>Event handlers are registered for most visible page elements, and</li>
+<li>The page responds to user interactions within 50 milliseconds.</li>
+</ul>
+<p>那實際上怎麼計算(可以參考<a target="_blank" rel="noopener" href="https://web.dev/tti/">這裡</a>)</p>
+<ol>
+<li>從 FCP 開始.</li>
+<li>搜尋出現 quiet window 至少 5 秒, 並記下該時間 ( quiet window 定義: 沒有 Long Task 且當下正在執行的 Get requests 不多於 2 個.<br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Long_Tasks_API">Long Task API</a><ul>
+<li>長時間的 running event handlers.</li>
+<li>複雜的 reflows and other re-renders.</li>
+<li>event loop 執行時間 that 超過 50 ms.</li>
+</ul>
+</li>
+<li>從第二步拿到的時間往前搜尋, 找到最後的 Long Task 結束時間</li>
+<li>TTI 就是最後的 Long Task 結束時間 (如果都沒有 Long Task, 那 TTI 就是 FCP).</li>
+</ol>
+<p>The following diagram should help visualize the steps above:</p>
+<p><img src="/hexo-blog/2022/11/03/performance-test/calculate.svg"></p>
+<h2 id="Total-Blocking-Time-TBT"><a href="#Total-Blocking-Time-TBT" class="headerlink" title="Total Blocking Time (TBT)"></a><a target="_blank" rel="noopener" href="https://web.dev/lighthouse-total-blocking-time/?utm_source=lighthouse&utm_medium=devtools#what-tbt-measures">Total Blocking Time (TBT)</a></h2><p>TBT 為一個總和的時間, 當瀏覽器凍結畫面 from responding to user input, such as mouse clicks, screen taps, or keyboard presses 都會加總進去<br>TBT 的數值為 FCP 到 TTI 之間的 “long tasks” blocking portion 時間總和, “long tasks” 代表對於 user input 的反應超過 50ms 的行為。假設偵測到一個 70ms 的 long tasks, 那它的 blocking portion &#x3D; 70ms - 50ms &#x3D; 20ms</p>
+<h2 id="Cumulative-Layout-Shift-CLS"><a href="#Cumulative-Layout-Shift-CLS" class="headerlink" title="Cumulative Layout Shift (CLS)"></a><a target="_blank" rel="noopener" href="https://web.dev/cls/?utm_source=lighthouse&utm_medium=devtools">Cumulative Layout Shift (CLS)</a></h2><p>CLS 為最大的 layout shift scores<br>layout shift scores &#x3D; impact fraction * distance fraction</p>
+<p>以下呈現 CLS 對使用者造成的影響</p>
+<p><img src="/hexo-blog/2022/11/03/performance-test/cls-demo.gif"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/performance-test/" data-id="cmdms5a5p002enu9l9n2zgspv" data-title="效能測試 Performance Test" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/Tool-Introduce/" rel="tag">Tool Introduce</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-neon-sign-card" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/hexo-blog/2022/11/03/neon-sign-card/" class="article-date">
@@ -107,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/neon-sign-card/" data-id="cm5um5feb001ch5q3feenh20s" data-title="霓虹燈卡片" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/neon-sign-card/" data-id="cmdms5a5e001dnu9leu435vlq" data-title="霓虹燈卡片" class="article-share-link">Share</a>
       
       
       
@@ -158,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/day-night-simulation/" data-id="cm5um5fdz000ch5q3930fhhu6" data-title="黑夜白天 switch 效果" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/day-night-simulation/" data-id="cmdms5a4y000cnu9l2ekghfnl" data-title="黑夜白天 switch 效果" class="article-share-link">Share</a>
       
       
       
@@ -209,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/donut-loading/" data-id="cm5um5fe2000jh5q319gbafnf" data-title="甜甜圈 Loading" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/donut-loading/" data-id="cmdms5a50000jnu9l709718vm" data-title="甜甜圈 Loading" class="article-share-link">Share</a>
       
       
       
@@ -260,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/3d-card/" data-id="cm5um5fdm0000h5q387d36tw1" data-title="3D 效果卡片" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/3d-card/" data-id="cmdms5a4l0000nu9l0t4vdrkb" data-title="3D 效果卡片" class="article-share-link">Share</a>
       
       
       
@@ -309,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/last-row-mixin/" data-id="cm5um5fe80012h5q38sjw5uzs" data-title="mixin 選取到最後一排" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/last-row-mixin/" data-id="cmdms5a5b001bnu9leqs63tpl" data-title="mixin 選取到最後一排" class="article-share-link">Share</a>
       
       
       
@@ -358,7 +446,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/choose-target-dom/" data-id="cm5um5fdu0005h5q36lez8y93" data-title=":nth-child() 選取特定區間物件" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/choose-target-dom/" data-id="cmdms5a4u0005nu9l9ufk2epw" data-title=":nth-child() 選取特定區間物件" class="article-share-link">Share</a>
       
       
       
@@ -407,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/02/different-aspect-ratio-dynamic-image/" data-id="cm5um5fe1000hh5q33mch6cja" data-title="等寬不同比例下自適應圖片" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/02/different-aspect-ratio-dynamic-image/" data-id="cmdms5a4z000hnu9l7ljubmh2" data-title="等寬不同比例下自適應圖片" class="article-share-link">Share</a>
       
       
       
@@ -456,7 +544,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/01/color-ui/" data-id="cm5um5fdv0006h5q3f5y84b2o" data-title="Color UI" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/01/color-ui/" data-id="cmdms5a4u0006nu9ldtyyf7s6" data-title="Color UI" class="article-share-link">Share</a>
       
       
       
@@ -508,71 +596,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/25/todo/" data-id="cm5um5feq002gh5q34ofjd2il" data-title="Hexo Todo" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/25/todo/" data-id="cmdms5a5p002fnu9leq78a76i" data-title="Hexo Todo" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/Todo/" rel="tag">Todo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-line-notify" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/hexo-blog/2022/10/25/line-notify/" class="article-date">
-  <time class="dt-published" datetime="2022-10-25T11:42:03.000Z" itemprop="datePublished">2022-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/hexo-blog/categories/CICD/">CICD</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/hexo-blog/2022/10/25/line-notify/">Line 發送通知 &amp; 綁定聊天室</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <br/>
-
-<h2 id="1-登入-Line-Notify"><a href="#1-登入-Line-Notify" class="headerlink" title="1. 登入 Line Notify"></a>1. 登入 Line Notify</h2><p><a target="_blank" rel="noopener" href="https://notify-bot.line.me/">https://notify-bot.line.me/</a><br><img src="/hexo-blog/2022/10/25/line-notify/line-notify.png" alt="Line Notify" title="lineNotifyLogo"></p>
-<h2 id="2-進入個人頁面"><a href="#2-進入個人頁面" class="headerlink" title="2. 進入個人頁面"></a>2. 進入個人頁面</h2><p><a target="_blank" rel="noopener" href="https://notify-bot.line.me/my/">https://notify-bot.line.me/my/</a><br><br></p>
-<h2 id="3-發行存取權杖"><a href="#3-發行存取權杖" class="headerlink" title="3. 發行存取權杖"></a>3. 發行存取權杖</h2><p>點擊”發行權杖”<br><img src="/hexo-blog/2022/10/25/line-notify/public-token.png" alt="發行權杖" title="publicToken"><br><br></p>
-<h2 id="4-設定功能"><a href="#4-設定功能" class="headerlink" title="4. 設定功能"></a>4. 設定功能</h2><ol>
-<li>填寫名稱: 傳送訊息時的顯示名稱</li>
-<li>選取要接收通知的聊天室<br><img src="/hexo-blog/2022/10/25/line-notify/choose-room.png" alt="設定功能" title="chooseRoom"><br></li>
-</ol>
-<h2 id="5-產生權杖"><a href="#5-產生權杖" class="headerlink" title="5. 產生權杖"></a>5. 產生權杖</h2><p>將權杖複製起來, 此權杖為該聊天室專用<br><img src="/hexo-blog/2022/10/25/line-notify/copy-token.png" alt="產生權杖" title="copyToken"><br><br></p>
-<h2 id="6-將-Line-Notify-邀請至該聊天室"><a href="#6-將-Line-Notify-邀請至該聊天室" class="headerlink" title="6. 將 Line Notify 邀請至該聊天室"></a>6. 將 Line Notify 邀請至該聊天室</h2><p><img src="/hexo-blog/2022/10/25/line-notify/invite-line-notify.png" alt="邀請 Line Notify" title="inviteLineNotify"><br><br></p>
-<h2 id="7-藉由-curl-傳送通知"><a href="#7-藉由-curl-傳送通知" class="headerlink" title="7. 藉由 curl 傳送通知"></a>7. 藉由 curl 傳送通知</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Linux</span></span><br><span class="line">curl -X POST https://notify-api.line.me/api/notify -H <span class="string">&#x27;Authorization: Bearer &lt;your-token&gt;&#x27;</span> -F <span class="string">&quot;message=妳好～&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Jenkins</span></span><br><span class="line">stage(<span class="string">&#x27;Notify&#x27;</span>) &#123;</span><br><span class="line">  steps &#123;</span><br><span class="line">    sh <span class="string">&quot;&quot;</span><span class="string">&quot; </span></span><br><span class="line"><span class="string">      curl -X POST https://notify-api.line.me/api/notify \</span></span><br><span class="line"><span class="string">      -H &#x27;Authorization: Bearer &lt;your-token&gt;&#x27; \</span></span><br><span class="line"><span class="string">      -F &quot;</span>message=妳好～<span class="string">&quot;</span></span><br><span class="line"><span class="string">    &quot;</span><span class="string">&quot;&quot;</span> </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<br>
-
-
-<h2 id="8-登登登"><a href="#8-登登登" class="headerlink" title="8. 登登登"></a>8. 登登登</h2><p><img src="/hexo-blog/2022/10/25/line-notify/line-notify-send-message.png" alt="在聊天室接收通知吧 ( 123為設定功能時填寫的名稱 )" title="lineNotifySendMessage"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/25/line-notify/" data-id="cm5um5fe90014h5q3fcyofmiz" data-title="Line 發送通知 &amp; 綁定聊天室" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-blog/tags/Line/" rel="tag">Line</a></li></ul>
 
     </footer>
   </div>
@@ -648,7 +676,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2022/10/">October 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo-blog/archives/2022/10/">October 2022</a></li></ul>
     </div>
   </div>
 
@@ -659,6 +687,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/hexo-blog/2025/07/28/export-import-file-local/">在本地端實作匯入&amp;匯出功能</a>
+          </li>
         
           <li>
             <a href="/hexo-blog/2025/01/13/hover-card/">選取hover的左右卡片</a>
@@ -674,10 +706,6 @@
         
           <li>
             <a href="/hexo-blog/2023/01/07/javascript-curry/">javascript 柯里化</a>
-          </li>
-        
-          <li>
-            <a href="/hexo-blog/2023/01/06/how-to-ask-questions-the-smart-way/">提問的智慧</a>
           </li>
         
       </ul>

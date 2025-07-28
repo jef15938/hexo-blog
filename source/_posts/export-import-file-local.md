@@ -14,7 +14,7 @@ tags: [Source Code]
 </p>
 <script async src="https://public.codepenassets.com/embed/index.js"></script>
 
-在匯出時使用「電腦」、「手機-瀏覽器」、「手機-加入主畫面」的行為都略有不同，
+在使用「電腦」、「手機-瀏覽器」、「手機-加入主畫面」，點擊匯出時行為都略有不同。
 
 <div style="max-width: 320px; margin: auto;">
 

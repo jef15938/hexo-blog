@@ -1,5 +1,5 @@
 ---
-title: Line 發送通知 & 綁定聊天室
+title: Line 發送通知 & 綁定聊天室(2025年3月31日官方已結束服務QQ)
 date: 2022-10-25 11:42:03
 categories: CICD
 tags: [Line]

@@ -14,7 +14,7 @@
 <meta property="og:description" content="要在你的專案中使用自己開發的 VS Code 擴展，通常需要先完成本地開發、測試和打包，然後在你的 VS Code 中安裝該擴展。以下是詳細步驟： 1. 創建自定義擴展要完全自定義懸停提示，最好的方法是創建自己的 VS Code 擴展。以下是如何從頭開始創建一個簡單的擴展：  安裝必要的工具首先，確保你已經安裝了 Node.js 和 npm（Node.js 的包管理工具）。你可以從 Node.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-01T11:11:02.000Z">
-<meta property="article:modified_time" content="2025-07-30T06:44:41.769Z">
+<meta property="article:modified_time" content="2025-08-01T08:17:18.960Z">
 <meta property="article:author" content="PongPong">
 <meta property="article:tag" content="VSCode Plugin">
 <meta name="twitter:card" content="summary">
@@ -42,6 +42,7 @@
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
+  <div id="banner2"></div>
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
@@ -49,7 +50,7 @@
       </h1>
       
       <h2 id="subtitle-wrap">
-        <a href="/hexo-blog/" id="subtitle">一個擁有廢廢靈魂的工程師</a>
+        <a href="/hexo-blog/" id="subtitle">一個廢廢的工程師</a>
       </h2>
       
     </div>
@@ -71,6 +72,12 @@
       </div>
     </div>
   </div>
+  <script>
+    document.getElementById("header").addEventListener("mousemove", function (e) {
+      var banner2 = document.querySelector("#banner2");
+      banner2.style.width = e.clientX + "px";
+  });
+  </script>
 </header>
       <div class="outer">
         <section id="main"><article id="post-vscode-plugin-develop" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
@@ -149,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2024/07/01/vscode-plugin-develop/" data-id="cmdplpbv6002or79lf6hq0qxy" data-title="如何開發 VS Code 套件" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2024/07/01/vscode-plugin-develop/" data-id="cmdsjw5fs001wp67zdxmb8sc0" data-title="如何開發 VS Code 套件" class="article-share-link">Share</a>
       
       
       

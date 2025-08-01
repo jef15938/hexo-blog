@@ -37,6 +37,7 @@
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
+  <div id="banner2"></div>
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
@@ -44,7 +45,7 @@
       </h1>
       
       <h2 id="subtitle-wrap">
-        <a href="/hexo-blog/" id="subtitle">一個擁有廢廢靈魂的工程師</a>
+        <a href="/hexo-blog/" id="subtitle">一個廢廢的工程師</a>
       </h2>
       
     </div>
@@ -66,6 +67,12 @@
       </div>
     </div>
   </div>
+  <script>
+    document.getElementById("header").addEventListener("mousemove", function (e) {
+      var banner2 = document.querySelector("#banner2");
+      banner2.style.width = e.clientX + "px";
+  });
+  </script>
 </header>
       <div class="outer">
         <section id="main">
@@ -116,7 +123,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/25/line-notify/" data-id="cmdplpbuv001dr79le4nd2tki" data-title="Line 發送通知 &amp; 綁定聊天室(2025年3月31日官方已結束服務QQ)" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/25/line-notify/" data-id="cmdsjw5fl001dp67z82ky78xa" data-title="Line 發送通知 &amp; 綁定聊天室(2025年3月31日官方已結束服務QQ)" class="article-share-link">Share</a>
       
       
       
@@ -162,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/24/browser-zoom/" data-id="cmdplpbud0004r79lb38pfi8l" data-title="網頁縮放程式碼 Browser Zoom" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/24/browser-zoom/" data-id="cmdsjw5f30004p67zafa9g7ab" data-title="網頁縮放程式碼 Browser Zoom" class="article-share-link">Share</a>
       
       
       
@@ -186,6 +193,7 @@
 
 <style>
   #header {
+    overflow-x: hidden;
     height: 100vh;
     transition: height 500ms ease-out;
   }

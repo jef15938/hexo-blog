@@ -37,6 +37,7 @@
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
+  <div id="banner2"></div>
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
@@ -44,7 +45,7 @@
       </h1>
       
       <h2 id="subtitle-wrap">
-        <a href="/hexo-blog/" id="subtitle">一個擁有廢廢靈魂的工程師</a>
+        <a href="/hexo-blog/" id="subtitle">一個廢廢的工程師</a>
       </h2>
       
     </div>
@@ -66,6 +67,12 @@
       </div>
     </div>
   </div>
+  <script>
+    document.getElementById("header").addEventListener("mousemove", function (e) {
+      var banner2 = document.querySelector("#banner2");
+      banner2.style.width = e.clientX + "px";
+  });
+  </script>
 </header>
       <div class="outer">
         <section id="main">

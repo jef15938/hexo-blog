@@ -14,7 +14,7 @@
 <meta property="og:description" content="12345678910111213141516&#x2F;&#x2F; zoomRate: 縮放倍數, 1 代表原本尺寸function zoom(zoomRate) &amp;#123;        var percent &#x3D; zoomRate * 100;    &#x2F;&#x2F; 設定 zoom, width    document.body.style.position &#x3D; &quot;relative&quot;;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-24T22:12:39.000Z">
-<meta property="article:modified_time" content="2025-07-30T06:44:41.739Z">
+<meta property="article:modified_time" content="2025-08-01T08:17:18.927Z">
 <meta property="article:author" content="PongPong">
 <meta property="article:tag" content="Source Code">
 <meta name="twitter:card" content="summary">
@@ -42,6 +42,7 @@
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
+  <div id="banner2"></div>
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
@@ -49,7 +50,7 @@
       </h1>
       
       <h2 id="subtitle-wrap">
-        <a href="/hexo-blog/" id="subtitle">一個擁有廢廢靈魂的工程師</a>
+        <a href="/hexo-blog/" id="subtitle">一個廢廢的工程師</a>
       </h2>
       
     </div>
@@ -71,6 +72,12 @@
       </div>
     </div>
   </div>
+  <script>
+    document.getElementById("header").addEventListener("mousemove", function (e) {
+      var banner2 = document.querySelector("#banner2");
+      banner2.style.width = e.clientX + "px";
+  });
+  </script>
 </header>
       <div class="outer">
         <section id="main"><article id="post-browser-zoom" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
@@ -105,7 +112,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/24/browser-zoom/" data-id="cmdplpbud0004r79lb38pfi8l" data-title="網頁縮放程式碼 Browser Zoom" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/24/browser-zoom/" data-id="cmdsjw5f30004p67zafa9g7ab" data-title="網頁縮放程式碼 Browser Zoom" class="article-share-link">Share</a>
       
       
       

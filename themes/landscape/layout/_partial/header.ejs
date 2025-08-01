@@ -1,5 +1,6 @@
 <header id="header">
   <div id="banner"></div>
+  <div id="banner2"></div>
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
@@ -29,4 +30,10 @@
       </div>
     </div>
   </div>
+  <script>
+    document.getElementById("header").addEventListener("mousemove", function (e) {
+      var banner2 = document.querySelector("#banner2");
+      banner2.style.width = e.clientX + "px";
+  });
+  </script>
 </header>

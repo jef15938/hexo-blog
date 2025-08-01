@@ -32,8 +32,22 @@
   background: url(banner-url) center #000
   background-size: cover
   z-index: -1
+  background-position-y: center;
+
+#banner2
+  position: absolute
+  top: 0
+  left: 0
+  width: 0
+  height: 100%
+  background: url(banner2-url) center #000
+  background-size: cover
+  z-index: -1
+  background-position-x: left
+  background-position-y: center;
 
 #header-title
+  mix-blend-mode: difference
   text-align: center
   height: logo-size
   position: absolute
@@ -112,6 +126,7 @@ $nav-link
     content: "\f09e"
 
 #nav-search-btn
+  display: none
   &:before
     content: "\f002"
 

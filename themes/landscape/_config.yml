@@ -3,7 +3,8 @@ menu:
   Home: /
   Archives: /archives
 # rss: /atom.xml
-banner: "images/banner.jpg"
+banner: "images/banner1.jpg"
+banner2: images/banner2.png
 
 # Content
 excerpt_link: Read More

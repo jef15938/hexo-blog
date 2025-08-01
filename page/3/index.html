@@ -44,23 +44,23 @@
         <a href="/hexo-blog/" id="logo">你好, 我是彭彭</a>
       </h1>
       
-      <h2 id="subtitle-wrap">
-        <a href="/hexo-blog/" id="subtitle">一個廢廢的工程師</a>
-      </h2>
-      
+        <h2 id="subtitle-wrap">
+          <a href="/hexo-blog/" id="subtitle">一個廢廢的工程師</a>
+        </h2>
+        
     </div>
     <div id="header-inner" class="inner">
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-        <a class="main-nav-link" href="/hexo-blog/">Home</a>
-        
-        <a class="main-nav-link" href="/hexo-blog/archives">Archives</a>
-        
+          <a class="main-nav-link" href="/hexo-blog/">Home</a>
+          
+          <a class="main-nav-link" href="/hexo-blog/archives">Archives</a>
+          
       </nav>
       <nav id="sub-nav">
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+            <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jef15938.github.io/hexo-blog"></form>
@@ -68,10 +68,19 @@
     </div>
   </div>
   <script>
-    document.getElementById("header").addEventListener("mousemove", function (e) {
-      var banner2 = document.querySelector("#banner2");
-      banner2.style.width = e.clientX + "px";
-  });
+    ['mousemove', 'touchmove'].forEach(function (eventName) {
+      window.addEventListener(eventName, function (e) {
+        var banner2 = document.querySelector("#banner2");
+        let resultWidth = "";
+        if(eventName === 'mousemove') {
+          resultWidth = e.clientX + "px";
+        }
+        else if(eventName === 'touchmove') {
+          resultWidth = e.touches[0].clientX + "px";
+        }
+        banner2.style.width = resultWidth;
+      });
+    });
   </script>
 </header>
       <div class="outer">
@@ -123,7 +132,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/25/line-notify/" data-id="cmdsjw5fl001dp67z82ky78xa" data-title="Line 發送通知 &amp; 綁定聊天室(2025年3月31日官方已結束服務QQ)" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/25/line-notify/" data-id="cmdskkicb001cnw7zad49e5dq" data-title="Line 發送通知 &amp; 綁定聊天室(2025年3月31日官方已結束服務QQ)" class="article-share-link">Share</a>
       
       
       
@@ -169,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/24/browser-zoom/" data-id="cmdsjw5f30004p67zafa9g7ab" data-title="網頁縮放程式碼 Browser Zoom" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/10/24/browser-zoom/" data-id="cmdskkibr0004nw7zehyta78k" data-title="網頁縮放程式碼 Browser Zoom" class="article-share-link">Share</a>
       
       
       

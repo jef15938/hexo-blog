@@ -14,7 +14,7 @@
 <meta property="og:description" content="要在你的專案中使用自己開發的 VS Code 擴展，通常需要先完成本地開發、測試和打包，然後在你的 VS Code 中安裝該擴展。以下是詳細步驟： 1. 創建自定義擴展要完全自定義懸停提示，最好的方法是創建自己的 VS Code 擴展。以下是如何從頭開始創建一個簡單的擴展：  安裝必要的工具首先，確保你已經安裝了 Node.js 和 npm（Node.js 的包管理工具）。你可以從 Node.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-01T11:11:02.000Z">
-<meta property="article:modified_time" content="2025-08-01T08:17:18.960Z">
+<meta property="article:modified_time" content="2025-08-01T08:36:15.969Z">
 <meta property="article:author" content="PongPong">
 <meta property="article:tag" content="VSCode Plugin">
 <meta name="twitter:card" content="summary">
@@ -49,23 +49,23 @@
         <a href="/hexo-blog/" id="logo">你好, 我是彭彭</a>
       </h1>
       
-      <h2 id="subtitle-wrap">
-        <a href="/hexo-blog/" id="subtitle">一個廢廢的工程師</a>
-      </h2>
-      
+        <h2 id="subtitle-wrap">
+          <a href="/hexo-blog/" id="subtitle">一個廢廢的工程師</a>
+        </h2>
+        
     </div>
     <div id="header-inner" class="inner">
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-        <a class="main-nav-link" href="/hexo-blog/">Home</a>
-        
-        <a class="main-nav-link" href="/hexo-blog/archives">Archives</a>
-        
+          <a class="main-nav-link" href="/hexo-blog/">Home</a>
+          
+          <a class="main-nav-link" href="/hexo-blog/archives">Archives</a>
+          
       </nav>
       <nav id="sub-nav">
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+            <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jef15938.github.io/hexo-blog"></form>
@@ -73,10 +73,19 @@
     </div>
   </div>
   <script>
-    document.getElementById("header").addEventListener("mousemove", function (e) {
-      var banner2 = document.querySelector("#banner2");
-      banner2.style.width = e.clientX + "px";
-  });
+    ['mousemove', 'touchmove'].forEach(function (eventName) {
+      window.addEventListener(eventName, function (e) {
+        var banner2 = document.querySelector("#banner2");
+        let resultWidth = "";
+        if(eventName === 'mousemove') {
+          resultWidth = e.clientX + "px";
+        }
+        else if(eventName === 'touchmove') {
+          resultWidth = e.touches[0].clientX + "px";
+        }
+        banner2.style.width = resultWidth;
+      });
+    });
   </script>
 </header>
       <div class="outer">
@@ -156,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2024/07/01/vscode-plugin-develop/" data-id="cmdsjw5fs001wp67zdxmb8sc0" data-title="如何開發 VS Code 套件" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2024/07/01/vscode-plugin-develop/" data-id="cmdskkicm002onw7zeq605q84" data-title="如何開發 VS Code 套件" class="article-share-link">Share</a>
       
       
       

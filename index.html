@@ -44,23 +44,23 @@
         <a href="/hexo-blog/" id="logo">你好, 我是彭彭</a>
       </h1>
       
-      <h2 id="subtitle-wrap">
-        <a href="/hexo-blog/" id="subtitle">一個廢廢的工程師</a>
-      </h2>
-      
+        <h2 id="subtitle-wrap">
+          <a href="/hexo-blog/" id="subtitle">一個廢廢的工程師</a>
+        </h2>
+        
     </div>
     <div id="header-inner" class="inner">
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-        <a class="main-nav-link" href="/hexo-blog/">Home</a>
-        
-        <a class="main-nav-link" href="/hexo-blog/archives">Archives</a>
-        
+          <a class="main-nav-link" href="/hexo-blog/">Home</a>
+          
+          <a class="main-nav-link" href="/hexo-blog/archives">Archives</a>
+          
       </nav>
       <nav id="sub-nav">
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+            <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jef15938.github.io/hexo-blog"></form>
@@ -68,10 +68,19 @@
     </div>
   </div>
   <script>
-    document.getElementById("header").addEventListener("mousemove", function (e) {
-      var banner2 = document.querySelector("#banner2");
-      banner2.style.width = e.clientX + "px";
-  });
+    ['mousemove', 'touchmove'].forEach(function (eventName) {
+      window.addEventListener(eventName, function (e) {
+        var banner2 = document.querySelector("#banner2");
+        let resultWidth = "";
+        if(eventName === 'mousemove') {
+          resultWidth = e.clientX + "px";
+        }
+        else if(eventName === 'touchmove') {
+          resultWidth = e.touches[0].clientX + "px";
+        }
+        banner2.style.width = resultWidth;
+      });
+    });
   </script>
 </header>
       <div class="outer">
@@ -123,7 +132,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2025/07/28/export-import-file-local/" data-id="cmdsjw5fd000op67z85q9avir" data-title="在本地端實作匯入&amp;匯出功能" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2025/07/28/export-import-file-local/" data-id="cmdskkiby000jnw7zdgrh9xv3" data-title="在本地端實作匯入&amp;匯出功能" class="article-share-link">Share</a>
       
       
       
@@ -174,7 +183,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2025/01/13/hover-card/" data-id="cmdsjw5fe000qp67zcxti7i7r" data-title="選取hover的左右卡片" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2025/01/13/hover-card/" data-id="cmdskkic2000qnw7zb3qndw3n" data-title="選取hover的左右卡片" class="article-share-link">Share</a>
       
       
       
@@ -224,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2025/01/10/overlap-background/" data-id="cmdsjw5fp001lp67z2curdguj" data-title="滑動分割背景" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2025/01/10/overlap-background/" data-id="cmdskkice001knw7zaftzhqrz" data-title="滑動分割背景" class="article-share-link">Share</a>
       
       
       
@@ -314,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2024/07/01/vscode-plugin-develop/" data-id="cmdsjw5fs001wp67zdxmb8sc0" data-title="如何開發 VS Code 套件" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2024/07/01/vscode-plugin-develop/" data-id="cmdskkicm002onw7zeq605q84" data-title="如何開發 VS Code 套件" class="article-share-link">Share</a>
       
       
       
@@ -365,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2023/01/07/javascript-curry/" data-id="cmdsjw5fh0013p67zbpbh4szq" data-title="javascript 柯里化" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2023/01/07/javascript-curry/" data-id="cmdskkic70012nw7zeay0g79k" data-title="javascript 柯里化" class="article-share-link">Share</a>
       
       
       
@@ -875,7 +884,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2023/01/06/how-to-ask-questions-the-smart-way/" data-id="cmdsjw5fg000yp67za3du88zb" data-title="提問的智慧" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2023/01/06/how-to-ask-questions-the-smart-way/" data-id="cmdskkic5000xnw7z1a7zgfa1" data-title="提問的智慧" class="article-share-link">Share</a>
       
       
       
@@ -999,7 +1008,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/12/13/git/" data-id="cmdsjw5ff000vp67z8k018r0r" data-title="Git 使用手冊" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/12/13/git/" data-id="cmdskkic1000onw7zd41lezmj" data-title="Git 使用手冊" class="article-share-link">Share</a>
       
       
       
@@ -1045,7 +1054,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/12/13/jenkins/" data-id="cmdsjw5fi0016p67z2cus0ncv" data-title="Jenkins 使用手冊" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/12/13/jenkins/" data-id="cmdskkic80014nw7z8erp3iu2" data-title="Jenkins 使用手冊" class="article-share-link">Share</a>
       
       
       
@@ -1094,7 +1103,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/29/add-calendar/" data-id="cmdsjw5f00001p67zfatscvz4" data-title="新增原生行事曆項目" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/29/add-calendar/" data-id="cmdskkibo0001nw7z4unncqkx" data-title="新增原生行事曆項目" class="article-share-link">Share</a>
       
       
       
@@ -1143,7 +1152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/22/custom-list-style-counter/" data-id="cmdsjw5f7000ap67z1k94efqk" data-title="客製化列點樣式及計數規則" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/22/custom-list-style-counter/" data-id="cmdskkibv000anw7zc4q77ccf" data-title="客製化列點樣式及計數規則" class="article-share-link">Share</a>
       
       
       

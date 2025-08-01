@@ -14,7 +14,7 @@
 <meta property="og:description" content="See the Pen    黑夜白天 switch 效果 by jef15938 (@jef15938)   on CodePen.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-03T11:13:37.000Z">
-<meta property="article:modified_time" content="2025-08-01T08:17:18.927Z">
+<meta property="article:modified_time" content="2025-08-01T08:36:15.940Z">
 <meta property="article:author" content="PongPong">
 <meta property="article:tag" content="Source Code">
 <meta name="twitter:card" content="summary">
@@ -49,23 +49,23 @@
         <a href="/hexo-blog/" id="logo">你好, 我是彭彭</a>
       </h1>
       
-      <h2 id="subtitle-wrap">
-        <a href="/hexo-blog/" id="subtitle">一個廢廢的工程師</a>
-      </h2>
-      
+        <h2 id="subtitle-wrap">
+          <a href="/hexo-blog/" id="subtitle">一個廢廢的工程師</a>
+        </h2>
+        
     </div>
     <div id="header-inner" class="inner">
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-        <a class="main-nav-link" href="/hexo-blog/">Home</a>
-        
-        <a class="main-nav-link" href="/hexo-blog/archives">Archives</a>
-        
+          <a class="main-nav-link" href="/hexo-blog/">Home</a>
+          
+          <a class="main-nav-link" href="/hexo-blog/archives">Archives</a>
+          
       </nav>
       <nav id="sub-nav">
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+            <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jef15938.github.io/hexo-blog"></form>
@@ -73,10 +73,19 @@
     </div>
   </div>
   <script>
-    document.getElementById("header").addEventListener("mousemove", function (e) {
-      var banner2 = document.querySelector("#banner2");
-      banner2.style.width = e.clientX + "px";
-  });
+    ['mousemove', 'touchmove'].forEach(function (eventName) {
+      window.addEventListener(eventName, function (e) {
+        var banner2 = document.querySelector("#banner2");
+        let resultWidth = "";
+        if(eventName === 'mousemove') {
+          resultWidth = e.clientX + "px";
+        }
+        else if(eventName === 'touchmove') {
+          resultWidth = e.touches[0].clientX + "px";
+        }
+        banner2.style.width = resultWidth;
+      });
+    });
   </script>
 </header>
       <div class="outer">
@@ -117,7 +126,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/day-night-simulation/" data-id="cmdsjw5f8000cp67ze7om57ts" data-title="黑夜白天 switch 效果" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2022/11/03/day-night-simulation/" data-id="cmdskkibw000cnw7zfwokfu1o" data-title="黑夜白天 switch 效果" class="article-share-link">Share</a>
       
       
       

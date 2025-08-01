@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://jef15938.github.io/hexo-blog/2025/07/28/export-import-file-local/%E6%89%8B%E6%A9%9F-%E7%80%8F%E8%A6%BD%E5%99%A8.png">
 <meta property="og:image" content="https://jef15938.github.io/hexo-blog/2025/07/28/export-import-file-local/%E6%89%8B%E6%A9%9F-%E5%8A%A0%E5%85%A5%E4%B8%BB%E7%95%AB%E9%9D%A2.png">
 <meta property="article:published_time" content="2025-07-28T14:38:56.000Z">
-<meta property="article:modified_time" content="2025-08-01T08:17:18.927Z">
+<meta property="article:modified_time" content="2025-08-01T08:36:15.940Z">
 <meta property="article:author" content="PongPong">
 <meta property="article:tag" content="Source Code">
 <meta name="twitter:card" content="summary">
@@ -53,23 +53,23 @@
         <a href="/hexo-blog/" id="logo">你好, 我是彭彭</a>
       </h1>
       
-      <h2 id="subtitle-wrap">
-        <a href="/hexo-blog/" id="subtitle">一個廢廢的工程師</a>
-      </h2>
-      
+        <h2 id="subtitle-wrap">
+          <a href="/hexo-blog/" id="subtitle">一個廢廢的工程師</a>
+        </h2>
+        
     </div>
     <div id="header-inner" class="inner">
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-        <a class="main-nav-link" href="/hexo-blog/">Home</a>
-        
-        <a class="main-nav-link" href="/hexo-blog/archives">Archives</a>
-        
+          <a class="main-nav-link" href="/hexo-blog/">Home</a>
+          
+          <a class="main-nav-link" href="/hexo-blog/archives">Archives</a>
+          
       </nav>
       <nav id="sub-nav">
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+            <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jef15938.github.io/hexo-blog"></form>
@@ -77,10 +77,19 @@
     </div>
   </div>
   <script>
-    document.getElementById("header").addEventListener("mousemove", function (e) {
-      var banner2 = document.querySelector("#banner2");
-      banner2.style.width = e.clientX + "px";
-  });
+    ['mousemove', 'touchmove'].forEach(function (eventName) {
+      window.addEventListener(eventName, function (e) {
+        var banner2 = document.querySelector("#banner2");
+        let resultWidth = "";
+        if(eventName === 'mousemove') {
+          resultWidth = e.clientX + "px";
+        }
+        else if(eventName === 'touchmove') {
+          resultWidth = e.touches[0].clientX + "px";
+        }
+        banner2.style.width = resultWidth;
+      });
+    });
   </script>
 </header>
       <div class="outer">
@@ -130,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jef15938.github.io/hexo-blog/2025/07/28/export-import-file-local/" data-id="cmdsjw5fd000op67z85q9avir" data-title="在本地端實作匯入&amp;匯出功能" class="article-share-link">Share</a>
+      <a data-url="https://jef15938.github.io/hexo-blog/2025/07/28/export-import-file-local/" data-id="cmdskkiby000jnw7zdgrh9xv3" data-title="在本地端實作匯入&amp;匯出功能" class="article-share-link">Share</a>
       
       
       
